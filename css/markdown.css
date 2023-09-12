@@ -2,8 +2,6 @@
 
 .post-md
 {   
-    2023/09/11 我将post-md改成了楷体
-    font-family: "Kaiti";
     width: 100%;
     font-size: 16px;
     letter-spacing: 0;
@@ -51,6 +49,7 @@
 }
 .post-md h6
 {
+    font-family: "Kaiti";
     font-size: 1.125rem;
     line-height: 1.2;
     padding: 12px 0;
