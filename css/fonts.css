@@ -52,5 +52,5 @@
     font-style: normal;
     font-weight: 400;
     src: local(""),
-        url("../fonts/FangZhengKaiTiJianTi-1.ttf") format("tff"), /* Chrome 26+, Opera 23+, Firefox 39+ */
+        url("../fonts/FangZhengKaiTiJianTi-1.ttf") format("ttf"), /* Chrome 26+, Opera 23+, Firefox 39+ */
 }

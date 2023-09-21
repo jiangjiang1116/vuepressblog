@@ -657,10 +657,3 @@ margin-left: 10px; /* 调整a标签和span之间的距离 */
         max-width: 100%;
     }
 }
-
-@media only screen and (max-width: 600px) {
-    .post
-{
-    font-family: Kaiti;
-}
-  }
