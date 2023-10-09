@@ -50,7 +50,7 @@
 /* h6我用来放主页的诗歌了 */
 .post-md h6
 {
-    font-family: "Kaiti";
+    /* font-family: "Kaiti"; */
     font-size: 2rem;
     line-height: 2.0;
     padding: 12px 0;
