@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0,  viewport-fit=cover" name="viewport" />
+    <meta name="description" content="Canvas学习" />
+    <meta name="hexo-theme-A4" content="v1.7.1" />
+    <link rel="alternate icon" type="image/webp" href="/img/favicon.webp">
+    <title>Sinbad</title>
+
+    
+        
+<link rel="stylesheet" href="/css/reset.css">
+
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+    
+    
+<link rel="stylesheet" href="/css/ui.css">
+ 
+    
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.3.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+    
+    <body>
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+<div class="header">
+    <div class="header-container">
+        <img style="
+        width: 56px;
+        height: auto;" alt="^-^" cache-control="max-age=86400" class="header-img" src="/img/favicon.png" width="10%"></img>
+        <div class="header-content">
+            <a class="logo" href="/">Sinbad</a> 
+            <span class="description"></span> 
+        </div>
+        
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">Home</a></li>
+            
+        
+            
+                <li><a href="/list/">Post</a></li>
+            
+        
+            
+                <li><a href="/about/">About</a></li>
+            
+        
+            
+                <li><a href="/tags/">Tags</a></li>
+            
+        
+            
+                <li><a href="/moments/">Moments</a></li>
+            
+        
+            
+                <li><a href="/renew/">Updates</a></li>
+            
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+
+    
+        <div class="post-main-title">
+            Canvas学习
+        </div>
+      
+    
+
+    <div class="post-md">
+        
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E7%BB%98%E5%88%B6%E8%A1%8C%E6%98%9F"><span class="post-toc-text">绘制行星</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E7%BB%98%E5%88%B6%E8%BD%AC%E5%8A%A8%E7%9A%84%E6%97%B6%E9%92%9F"><span class="post-toc-text">绘制转动的时钟</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E7%B2%92%E5%AD%90%E5%8A%A8%E7%94%BB"><span class="post-toc-text">粒子动画</span></a></li></ol>
+        
+        <h1 id="绘制行星"><a href="#绘制行星" class="headerlink" title="绘制行星"></a>绘制行星</h1><pre><code>&lt;canvas width="1000" height="1000" id="canvas" style="background:#000;"&gt;
+    您的浏览器不支持，请升级浏览器!
+&lt;/canvas&gt;
+//如果不支持canvas，则提示信息
+</code></pre>
+<pre><code>//设置2d绘图环境
+var ctx = document.getElementById("canvas").getContext("2d");
+
+//轨道
+function drawTrack(){
+  for(var i = 0;i &lt; 8;i++){
+    ctx.beginPath();
+    ctx.arc(500,500,(i+1) * 50,0,360,false);
+    ctx.strokeStyle = "#fff";//设置笔触颜色
+    ctx.stroke();
+    ctx.closePath();
+  }
+}
+
+
+//星球
+
+function Star(x,y,radius,cycle,sColor,eColor){
+  //画出星球需要的属性
+  //星球的坐标点 星球的半径 星球的颜色（开始颜色、结束颜色）
+  //公转周期
+  
+  //星球坐标点
+  this.x = x;
+  this.y = y;
+  this.radius = radius;
+  this.cycle = cycle;
+  this.eColor = eColor;
+  this.sColor = sColor;
+  
+  
+  this.color = null;//渐变颜色空对象
+  this.time = 0;//设置一个计时器
+  
+  this.draw = function(){
+    //save()可以这样理解 原来的画布内容不变 把save（）和restore()之间的内容画好了 在塞进来
+    ctx.save();//保存之前的画布内容
+    ctx.translate(500,500);//重置0,0坐标点
+    ctx.rotate(this.time * (360/this.cycle) * Math.PI / 180);//设置旋转角度
+    
+    //画星球
+    ctx.beginPath();
+    ctx.arc(this.x,this.y,this.radius,0,360,false);
+    ctx.closePath();
+    
+    //设置星球的填充颜色
+    
+    this.color = ctx.createRadialGradient(this.x,this.y,0,this.x,this.y,this.radius);
+    this.color.addColorStop(0,this.sColor);//渐变颜色开始点
+    this.color.addColorStop(0,this.eColor);//渐变颜色结束点
+    ctx.fillStyle = this.color;
+    ctx.fill();//执行填充命令
+    
+    //填充星球
+    
+    
+    ctx.restore();//恢复之前保存的画布内容
+    this.time +=1;
+  }
+}
+
+ //创建一个太阳对象的构造函数
+function Sun(){
+  Star.call(this,0,0,20,0,"#F00","#f90");
+}
+//创建一个水星的对象构造方法
+function Mercury(){
+  Star.call(this,0,-50,10,87.70,"#A69697","#5C3E40");
+}
+//创建一个金星的对象构造方法
+function Venus(){
+  Star.call(this,0,-100,10,224.701,"#C4BBAC","#1F1315");
+}
+//创建一个地球的对象构造方法
+function Earth(){
+  Star.call(this,0,-150,10,365.224,"#78B1E8","#050C12");
+}
+//创建一个火星的对象构造方法
+function Mars(){
+  Star.call(this,0,-200,10,686.98,"#CEC9B6","#76422D");
+}
+//创建一个木星的对象构造方法
+function Jupiter(){
+  Star.call(this,0,-250,10,4332.589,"#C0A48E","#322222");
+}
+//创建一个土星的对象构造方法
+function Saturn(){
+  Star.call(this,0,-300,10,10759.5,"#F7F9E3","#5C4533");
+}
+ //创建一个天王星的对象构造方法
+function Uranus(){
+  Star.call(this,0,-350,10,30799.095,"#A7E1E5","#19243A");
+}
+//创建一个海王星的对象构造方法
+function Neptune(){
+  Star.call(this,0,-400,10,60152,"#0661B2","#1E3B73");
+}
+
+ //创建太阳对象实例
+var sun=new Sun();
+
+//创建水星对象实例
+var water=new Mercury();
+
+//创建金星对象实例
+var gold=new Venus();
+
+//创建一个地球对象实例
+var diqiu=new Earth();
+
+//创建一个火星对象实例
+var fire=new Mars();
+
+//创建一个木星对象实例
+var wood=new Jupiter();
+
+//创建一个土星对象实例
+var soil=new Saturn();
+
+//创建一个天王星对象实例
+var god=new Uranus();
+
+//创建一个海王星对象实例
+var sea=new Neptune();
+
+
+ function move(){
+   //清除画布
+   ctx.clearRect(0,0,1000,1000);
+   //画出轨道
+   drawTrack();
+   //画出每个星球
+   sun.draw();
+   water.draw();
+   gold.draw();
+   diqiu.draw();
+   fire.draw();
+   wood.draw();
+   soil.draw();
+   god.draw();
+   sea.draw();
+ }
+
+//使让星球进行运动
+setInterval(move,10);
+</code></pre>
+<p>完整代码：</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;太阳系模型&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;canvas width="1000" height="1000" id="canvas" style="background:#000;"&gt;
+        您的浏览器不支持，请升级浏览器!
+    &lt;/canvas&gt;
+&lt;script&gt;
+//设置2d绘图环境
+var ctx = document.getElementById("canvas").getContext("2d");
+
+//轨道
+function drawTrack(){
+  for(var i = 0;i &lt; 8;i++){
+    ctx.beginPath();
+    ctx.arc(500,500,(i+1) * 50,0,360,false);
+    ctx.strokeStyle = "#fff";//设置笔触颜色
+    ctx.stroke();
+    ctx.closePath();
+  }
+}
+
+
+//星球
+
+function Star(x,y,radius,cycle,sColor,eColor){
+  //画出星球需要的属性
+  //星球的坐标点 星球的半径 星球的颜色（开始颜色、结束颜色）
+  //公转周期
+  
+  //星球坐标点
+  this.x = x;
+  this.y = y;
+  this.radius = radius;
+  this.cycle = cycle;
+  this.eColor = eColor;
+  this.sColor = sColor;
+  
+  
+  this.color = null;//渐变颜色空对象
+  this.time = 0;//设置一个计时器
+  
+  this.draw = function(){
+    //save()可以这样理解 原来的画布内容不变 把save（）和restore()之间的内容画好了 在塞进来
+    ctx.save();//保存之前的画布内容
+    ctx.translate(500,500);//重置0,0坐标点
+    ctx.rotate(this.time * (360/this.cycle) * Math.PI / 180);//设置旋转角度
+    
+    //画星球
+    ctx.beginPath();
+    ctx.arc(this.x,this.y,this.radius,0,360,false);
+    ctx.closePath();
+    
+    //设置星球的填充颜色
+    
+    this.color = ctx.createRadialGradient(this.x,this.y,0,this.x,this.y,this.radius);
+    this.color.addColorStop(0,this.sColor);//渐变颜色开始点
+    this.color.addColorStop(0,this.eColor);//渐变颜色结束点
+    ctx.fillStyle = this.color;
+    ctx.fill();//执行填充命令
+    
+    //填充星球
+    
+    
+    ctx.restore();//恢复之前保存的画布内容
+    this.time +=1;
+  }
+}
+
+ //创建一个太阳对象的构造函数
+function Sun(){
+  Star.call(this,0,0,20,0,"#F00","#f90");
+}
+//创建一个水星的对象构造方法
+function Mercury(){
+  Star.call(this,0,-50,10,87.70,"#A69697","#5C3E40");
+}
+//创建一个金星的对象构造方法
+function Venus(){
+  Star.call(this,0,-100,10,224.701,"#C4BBAC","#1F1315");
+}
+//创建一个地球的对象构造方法
+function Earth(){
+  Star.call(this,0,-150,10,365.224,"#78B1E8","#050C12");
+}
+//创建一个火星的对象构造方法
+function Mars(){
+  Star.call(this,0,-200,10,686.98,"#CEC9B6","#76422D");
+}
+//创建一个木星的对象构造方法
+function Jupiter(){
+  Star.call(this,0,-250,10,4332.589,"#C0A48E","#322222");
+}
+//创建一个土星的对象构造方法
+function Saturn(){
+  Star.call(this,0,-300,10,10759.5,"#F7F9E3","#5C4533");
+}
+ //创建一个天王星的对象构造方法
+function Uranus(){
+  Star.call(this,0,-350,10,30799.095,"#A7E1E5","#19243A");
+}
+//创建一个海王星的对象构造方法
+function Neptune(){
+  Star.call(this,0,-400,10,60152,"#0661B2","#1E3B73");
+}
+
+ //创建太阳对象实例
+var sun=new Sun();
+
+//创建水星对象实例
+var water=new Mercury();
+
+//创建金星对象实例
+var gold=new Venus();
+
+//创建一个地球对象实例
+var diqiu=new Earth();
+
+//创建一个火星对象实例
+var fire=new Mars();
+
+//创建一个木星对象实例
+var wood=new Jupiter();
+
+//创建一个土星对象实例
+var soil=new Saturn();
+
+//创建一个天王星对象实例
+var god=new Uranus();
+
+//创建一个海王星对象实例
+var sea=new Neptune();
+
+
+ function move(){
+   //清除画布
+   ctx.clearRect(0,0,1000,1000);
+   //画出轨道
+   drawTrack();
+   //画出每个星球
+   sun.draw();
+   water.draw();
+   gold.draw();
+   diqiu.draw();
+   fire.draw();
+   wood.draw();
+   soil.draw();
+   god.draw();
+   sea.draw();
+ }
+
+//使让星球进行运动
+setInterval(move,10);
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h1 id="绘制转动的时钟"><a href="#绘制转动的时钟" class="headerlink" title="绘制转动的时钟"></a>绘制转动的时钟</h1><pre><code> &lt;canvas id="clock" width="500" height="500"&gt;
+    您的浏览器不支持此效果展示，请升级最新版本
+&lt;/canvas&gt;
+</code></pre>
+<pre><code>var clock = document.getElementById("clock");
+var context = clock.getContext("2d");
+
+function drawClock(){
+  context.clearRect(0,0,500,500);//清空画布 每画一次 都要清除前面的在重新画
+  var now = new Date();
+  var sec = now.getSeconds();
+  var min = now.getMinutes();
+  var hour = now.getHours();
+
+  //小时必须获取浮点类型（小时 + 分数转换成的小时）
+  hour = hour + min / 60;
+  
+  //将24小时进制转换为12小时 不然就是 这样的形式不好了 18:30:10
+  hour = hour &gt; 12 ? hour - 12 : hour;
+
+  
+  //表盘
+
+  context.lineWidth = 10;
+  context.strokeStyle = "greenblue"
+  context.beginPath();
+  context.arc(250,250,200,0,360,false);//true 顺时针
+  context.closePath();
+  context.stroke();
+
+  //时刻度
+  for(var i = 0; i &lt; 12; i++){
+    context.save();//保存当前状态
+    context.lineWidth = 7;//时针粗细
+    context.strokeStyle = "#000";//时针颜色
+    context.translate(250,250);//设置0,0点
+    context.rotate(i * 30 * Math.PI / 180);//获得每次旋转之后的角度 设置旋转角度 角度 * Math.PI / 180 = 弧度
+    context.beginPath();
+    context.moveTo(0,-170);
+    context.lineTo(0,-190);
+    context.stroke(); //笔触
+    context.closePath();
+    context.restore();//恢复当前状态
+  }
+  //分刻度
+   for(var i = 0;i &lt; 60; i++){
+     context.save();
+     context.lineWidth = 5;//设置分刻度粗细
+     context.strokeStyle = "#000";
+     context.translate(250,250);//重置0,0点
+     context.rotate(i * 6 * Math.PI / 180);//设置旋转角度
+     context.beginPath();
+     context.moveTo(0,-180);
+     context.lineTo(0,-190);
+     context.stroke();
+     context.closePath();
+
+     context.restore();
+   }
+
+  //时针
+
+  context.save(); //保存当前绘制的状态
+  //设置时针风格
+  context.lineWidth = 7;
+  context.strokeStyle = "#000";
+  context.translate(250,250);//设置异次元空间的0,0 点
+  context.rotate( hour * 30 * Math.PI / 180);//设置旋转角度
+  context.beginPath();
+  context.moveTo(0,-140);
+  context.lineTo(0,10);
+  context.closePath();
+  context.stroke();
+  context.restore();
+
+  //分针
+  context.save();
+  context.lineWidth = 5;//设置分针风格
+  context.strokeStyle = "#000";
+  context.translate(250,250);
+  context.rotate(min * 6 * Math.PI / 180);//设置旋转角度
+  context.beginPath();
+  context.moveTo(0,-160);
+  context.lineTo(0,15);
+  context.closePath();
+  context.stroke();
+  context.restore();
+
+  //秒针
+  context.save();
+  context.lineWidth = 3;//设置分针风格
+  context.strokeStyle = "#f00";
+  context.translate(250,250);
+  context.rotate(sec * 6 * Math.PI / 180);//设置旋转角度 每秒走的角度是6度
+  context.beginPath();
+  context.moveTo(0,-170);
+  context.lineTo(0,20);
+  context.closePath();
+  context.stroke();
+  
+  
+  //画时针 分针 秒针的交叉点
+  context.beginPath();
+  context.arc(0,0,5,0,360,false);//FALSE 逆时针
+  context.closePath();
+  context.fillStyle = "gray";//设置填充样式
+  context.fill();
+  context.stroke();
+ 
+  //设置秒针的小圆点
+  
+  context.beginPath();
+  context.arc(0,-160,2,0,360,false);//FALSE 逆时针
+  context.closePath();
+  context.fillStyle = "blue";//设置填充样式
+  context.fill();
+  context.stroke();
+  
+  context.restore();
+}
+drawClock(); //这一句必须加上 因为setInterval 第一秒不执行
+setInterval(drawClock,1000);
+</code></pre>
+<h1 id="粒子动画"><a href="#粒子动画" class="headerlink" title="粒子动画"></a>粒子动画</h1><pre><code>&lt;canvas id="canvas"&gt;您的浏览器不支持，请升级最新的版本!&lt;/canvas&gt;
+</code></pre>
+<pre><code>    
+*{
+    margin:0px;
+    padding:0px;
+}
+body{
+    background:#000;
+}
+canvas{
+    position:absolute;
+    width:100%;
+    height:100%;
+}
+</code></pre>
+<pre><code>window.requestAnimFrame = ( function() {
+        return window.requestAnimationFrame ||
+                    window.webkitRequestAnimationFrame ||
+                    window.mozRequestAnimationFrame ||
+                    function( callback ) {
+                        window.setTimeout( callback, 1000 / 60 );
+                    };
+        })();
+        var can = document.getElementById("canvas");
+        var cxt = can.getContext("2d");
+        can.width = window.innerWidth;
+        can.height = window.innerHeight;
+        cxt.lineWidth = 0.3;
+        //初始链接线条显示位置
+        var mousePosition = {
+            x : 30*can.width/100,
+            y : 30*can.height/100
+        }
+        //圆形粒子对象参数
+        var dots = {
+            n : 500,//圆形粒子个数
+            distance : 50,//圆形粒子之间的距离
+            d_radius : 100,//粒子距离鼠标点的距离
+            array : []//保存n个圆形粒子对象
+        }
+        //创建随即颜色值
+        function colorValue(min){
+            return Math.floor(Math.random()*255 + min);
+        }
+        function createColorStyle(r,g,b){
+            return "rgba("+r+","+g+","+b+", 1)";
+        }
+        //混合两个圆形粒子的颜色
+        function mixConnect(c1,r1,c2,r2){//圆的颜色 半径
+            return (c1*r1+c2*r2)/(r1+r2);
+        };
+        //生成线条的颜色
+        function lineColor(dot1,dot2){//获取具体的圆的颜色再计算
+            var color1 = dot1.color,
+                color2 = dot2.color;
+            var r = mixConnect(color1.r,dot1.radius,color2.r,dot2.radius);
+            var g = mixConnect(color1.g,dot1.radius,color2.g,dot2.radius);
+            var b = mixConnect(color1.b,dot1.radius,color2.b,dot2.radius);
+            return createColorStyle(Math.floor(r),Math.floor(g),Math.floor(b));
+        }
+        //生成圆形粒子的颜色对象
+        function Color(min){
+            min = min || 0;
+            this.r = colorValue(min);
+            this.g = colorValue(min);
+            this.b = colorValue(min);
+            this.style = createColorStyle(this.r,this.g,this.b);
+        }
+        //创建圆形粒子对象
+        function Dot(){
+            //圆形粒子随机圆心坐标点
+            this.x = Math.random()*can.width;
+            this.y = Math.random()*can.height;
+            //x y 方向运动的速度值
+            this.vx = -0.5 + Math.random();
+            this.vy = -0.5 + Math.random();
+            this.radius = Math.random()*5;
+            //this.color = "#ff3333";
+            this.color = new Color();
+        }
+        //绘制出圆形粒子
+        Dot.prototype.draw = function(){
+            cxt.beginPath();
+            cxt.fillStyle = this.color.style;
+            cxt.arc(this.x,this.y,this.radius,0,Math.PI*2,false);
+            cxt.fill();
+        }
+        //添加圆形粒子
+        function createCircle(){
+            for (var i=0;i&lt;dots.n ;i++ )
+            {
+                dots.array.push(new Dot());
+            }
+        }
+        //绘制出圆形粒子
+        function drawDots(){
+            for (var i=0;i&lt;dots.n ;i++ )
+            {
+                var dot = dots.array[i];
+                dot.draw();
+            }
+        }
+        
+        //drawDots();
+        //移动
+        function moveDots(){
+            for (var i=0;i&lt;dots.n ;i++ ){
+                var dot = dots.array[i];
+                //当圆形粒子对象碰壁的时候就反弹回来
+                if (dot.y &lt; 0 || dot.y &gt; can.height)
+                {
+                    dot.vx = dot.vx;
+                    dot.vy = -dot.vy;
+                }else if (dot.x &lt; 0 || dot.x &gt; can.width)
+                {
+                    dot.vx = -dot.vx;
+                    dot.vy = dot.vy;
+                }
+                //给圆形粒子圆心坐标加上速度值移动圆形粒子
+                dot.x += dot.vx;
+                dot.y += dot.vy;
+            }
+        }
+        //链接粒子对象
+        function connectDots(){
+            for (var i=0;i&lt;dots.n ; i++)
+            {
+                for ( var j=0;j&lt;dots.n ; j++)
+                {
+                    iDot = dots.array[i];
+                    jDot = dots.array[j];
+                    if ((iDot.x - jDot.x) &lt; dots.distance &amp;&amp; (iDot.y - jDot.y) &lt; dots.distance &amp;&amp; (iDot.x - jDot.x) &gt; -dots.distance &amp;&amp; (iDot.y - jDot.y) &gt; -dots.distance)
+                    {
+                        if ((iDot.x - mousePosition.x) &lt; dots.d_radius &amp;&amp; (iDot.y - mousePosition.y) &lt; dots.d_radius &amp;&amp; (iDot.x - mousePosition.x) &gt; -dots.d_radius &amp;&amp; (iDot.y - mousePosition.y) &gt; -dots.d_radius)
+                        {
+                            cxt.beginPath();
+                            //cxt.strokeStyle = "yellow";
+                            cxt.strokeStyle = lineColor(iDot,jDot);
+                            cxt.moveTo(iDot.x,iDot.y);
+                            cxt.lineTo(jDot.x,jDot.y);
+                            cxt.closePath();
+                            cxt.stroke();
+                        }
+                        
+                    }
+                }
+            }
+        }
+        createCircle();
+        //让圆形粒子不断的移动
+        function animateDots(){
+            cxt.clearRect(0,0,can.width,can.height);
+            moveDots();
+            connectDots()
+            drawDots();
+            requestAnimFrame(animateDots);
+        }
+        animateDots();
+        
+        can.onmousemove = function(ev){
+            var ev = ev || window.event;
+            mousePosition.x = ev.pageX;
+            mousePosition.y = ev.pageY;
+        }
+        can.onmouseout = function(){
+            mousePosition.x = can.width/2;
+            mousePosition.y = can.height/2;
+        }
+</code></pre>
+
+        <script src="https://giscus.app/client.js"
+        data-repo="jiangjiang1116/jiangjiang1116.github.io"
+        data-repo-id="R_kgDOKPAthg"
+        data-category="General"
+        data-category-id="DIC_kwDOKPAths4CZPtg"
+        data-mapping="title"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="light"
+        data-lang="zh-CN"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2023-10-10</span>
+            
+                <span>该篇被 江江</span>
+            
+            
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/Notes/'>
+                            Notes
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+    
+        
+
+     
+</div>
+
+
+
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+             
+
+            
+                
+
+            
+        </span>
+    
+</div>
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>My Little Blog</span>
+            
+                <!-- <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span> -->
+                <span class="footer-last-span-right"><i></i></span>
+            
+    
+</div>
+
+
+    
+<link rel="stylesheet" href="/css/a11y-dark.min.css">
+
+    
+<script src="/js/highlight.min.js"></script>
+
+    
+<script src="/js/highlightjs-line-numbers.js"></script>
+
+
+
+<script>
+    hljs.initHighlightingOnLoad();
+    hljs.initLineNumbersOnLoad();
+</script>
+                </div>
+            
+    </body>
+</html>
