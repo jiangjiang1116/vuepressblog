@@ -27,7 +27,7 @@
     
 <link rel="stylesheet" href="/css/style.css">
 
-<meta name="generator" content="Hexo 7.0.0-rc2">
+<meta name="generator" content="Hexo 6.3.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
     
@@ -104,42 +104,61 @@
         
         <p>编写 Markdown 文章的基本语法和示例：</p>
 <h4 id="标题："><a href="#标题：" class="headerlink" title="标题："></a>标题：</h4><p>使用 # 符号来表示标题，# 的数量表示标题级别，例如：</p>
-<figure class="highlight markdown"><table><tbody><tr><td class="code"><pre><span class="line"><span class="section"># 一级标题</span></span><br><span class="line"><span class="section">## 二级标题</span></span><br><span class="line"><span class="section">### 三级标题</span></span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="markdown"># 一级标题
+## 二级标题
+### 三级标题
+</code></pre>
 <h4 id="段落："><a href="#段落：" class="headerlink" title="段落："></a>段落：</h4><p>段落之间用空行分隔，可以在段落中直接输入文本，不需要额外的标记。</p>
 <h4 id="列表："><a href="#列表：" class="headerlink" title="列表："></a>列表：</h4><p>可以使用 *、- 或 1. 2. 3. 来创建无序或有序列表，例如：</p>
-<figure class="highlight markdown"><table><tbody><tr><td class="code"><pre><span class="line"><span class="bullet">-</span> 无序列表项 1</span><br><span class="line"><span class="bullet">-</span> 无序列表项 2</span><br><span class="line"><span class="bullet">  -</span> 嵌套的无序列表项</span><br><span class="line"><span class="bullet">1.</span> 有序列表项 1</span><br><span class="line"><span class="bullet">2.</span> 有序列表项 2</span><br></pre></td></tr></tbody></table></figure>
-<h4 id="链接："><a href="#链接：" class="headerlink" title="链接："></a>链接：</h4><figure class="highlight markdown"><table><tbody><tr><td class="code"><pre><span class="line">[<span class="string">OpenAI</span>](<span class="link">https://www.openai.com/</span>)</span><br><span class="line">//[链接文本] (链接地址)</span><br></pre></td></tr></tbody></table></figure>
-
+<pre><code class="markdown">- 无序列表项 1
+- 无序列表项 2
+  - 嵌套的无序列表项
+1. 有序列表项 1
+2. 有序列表项 2
+</code></pre>
+<h4 id="链接："><a href="#链接：" class="headerlink" title="链接："></a>链接：</h4><pre><code class="markdown">[OpenAI](https://www.openai.com/)
+//[链接文本] (链接地址)
+</code></pre>
 <h4 id="图片："><a href="#图片：" class="headerlink" title="图片："></a>图片：</h4><p>使用 <img src="/%E5%9B%BE%E7%89%87%E9%93%BE%E6%8E%A5" alt="图片描述"> 来插入图片，例如：</p>
-<figure class="highlight markdown"><table><tbody><tr><td class="code"><pre><span class="line">![<span class="string">示例图片</span>](<span class="link">https://example.com/image.jpg</span>)</span><br></pre></td></tr></tbody></table></figure>
-
+<pre><code class="markdown">![示例图片](https://example.com/image.jpg)
+</code></pre>
 <h4 id="引用："><a href="#引用：" class="headerlink" title="引用："></a>引用：</h4><p>使用 &gt; 来创建引用，例如：</p>
-<figure class="highlight markdown"><table><tbody><tr><td class="code"><pre><span class="line"><span class="quote">&gt; 这是一个引用文本。</span></span><br></pre></td></tr></tbody></table></figure>
-
+<pre><code class="markdown">&gt; 这是一个引用文本。
+</code></pre>
 <h6 id="预览"><a href="#预览" class="headerlink" title="预览"></a>预览</h6><blockquote>
 <p>这是一个引用文本。</p>
 </blockquote>
 <h4 id="粗体和斜体："><a href="#粗体和斜体：" class="headerlink" title="粗体和斜体："></a>粗体和斜体：</h4><p>使用 <strong>粗体</strong> 和 <em>斜体</em> 来表示粗体和斜体文本，例如：</p>
-<figure class="highlight markdown"><table><tbody><tr><td class="code"><pre><span class="line"><span class="strong">**这是粗体文本**</span></span><br><span class="line"><span class="emphasis">*这是斜体文本*</span></span><br></pre></td></tr></tbody></table></figure>
-
+<pre><code class="markdown">**这是粗体文本**
+*这是斜体文本*
+</code></pre>
 <h6 id="预览-1"><a href="#预览-1" class="headerlink" title="预览"></a>预览</h6><p><strong>这是粗体文本</strong><br><em>这是斜体文本</em></p>
 <h4 id="代码块："><a href="#代码块：" class="headerlink" title="代码块："></a>代码块：</h4><p>使用三个反引号 ` 或四个空格来创建代码块，例如：</p>
-<pre><figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">function helloWorld() {</span><br><span class="line">    console.log("Hello, World!");</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<pre>```
+function helloWorld() {
+    console.log("Hello, World!");
+}
+```
 </pre>
 <h6 id="指定代码块语言"><a href="#指定代码块语言" class="headerlink" title="指定代码块语言"></a>指定代码块语言</h6><p>使用三个反引号（```）创建代码块，可以在后面指定语言（可选）：</p>
-<figure class="highlight markdown"><table><tbody><tr><td class="code"><pre><span class="line"><span class="code">```javascript</span></span><br><span class="line"><span class="code">function helloWorld() {</span></span><br><span class="line"><span class="code">    console.log("Hello, World!");</span></span><br><span class="line"><span class="code">}</span></span><br></pre></td></tr></tbody></table></figure>
-
+<pre><code class="markdown">```javascript
+function helloWorld() {
+    console.log("Hello, World!");
+}
+</code></pre>
 <p>你可以在反引号后面添加编程语言的名称，以便正确高亮显示代码，例如：``javascript`</p>
-<h6 id="使用四个空格缩进来创建代码块"><a href="#使用四个空格缩进来创建代码块" class="headerlink" title="使用四个空格缩进来创建代码块"></a>使用四个空格缩进来创建代码块</h6><figure class="highlight markdown"><table><tbody><tr><td class="code"><pre><span class="line">function helloWorld() {</span><br><span class="line"><span class="code">    console.log("Hello, World!");</span></span><br><span class="line"><span class="code">}</span></span><br></pre></td></tr></tbody></table></figure>
-
-
-
+<h6 id="使用四个空格缩进来创建代码块"><a href="#使用四个空格缩进来创建代码块" class="headerlink" title="使用四个空格缩进来创建代码块"></a>使用四个空格缩进来创建代码块</h6><pre><code class="markdown">    function helloWorld() {
+        console.log("Hello, World!");
+    }
+</code></pre>
 <h4 id="分割线："><a href="#分割线：" class="headerlink" title="分割线："></a>分割线：</h4><p>使用三个或更多的 -、* 或 _ 来创建水平分割线，例如：</p>
-<figure class="highlight markdown"><table><tbody><tr><td class="code"><pre><span class="line">---</span><br></pre></td></tr></tbody></table></figure>
-
+<pre><code class="markdown">---
+</code></pre>
 <h4 id="表格："><a href="#表格：" class="headerlink" title="表格："></a>表格：</h4><p>创建表格需要使用 | 来分隔单元格，例如：</p>
-<figure class="highlight markdown"><table><tbody><tr><td class="code"><pre><span class="line">| 表头1 | 表头2 |</span><br><span class="line">| ------ | ------ |</span><br><span class="line">| 单元格1 | 单元格2 |</span><br></pre></td></tr></tbody></table></figure>
-
+<pre><code class="markdown">| 表头1 | 表头2 |
+| ------ | ------ |
+| 单元格1 | 单元格2 |
+</code></pre>
 <h5 id="预览："><a href="#预览：" class="headerlink" title="预览："></a>预览：</h5><table>
 <thead>
 <tr>
@@ -215,7 +234,7 @@
                     <div class="footer">
     
         <span> 
-            [object Object] 
+             
 
             
                 
@@ -227,9 +246,10 @@
 <!--这是指一条线往下的内容-->
 <div class="footer-last">
     
-            <span>© 2023-1999 S1nbad/链接</span>
+            <span>My Little Blog</span>
             
-                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+                <!-- <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span> -->
+                <span class="footer-last-span-right"><i></i></span>
             
     
 </div>

@@ -27,7 +27,7 @@
     
 <link rel="stylesheet" href="/css/style.css">
 
-<meta name="generator" content="Hexo 7.0.0-rc2">
+<meta name="generator" content="Hexo 6.3.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
     
@@ -100,7 +100,7 @@
 
     <div class="post-md">
         
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-%E5%AD%97%E4%BD%93%E6%98%BE%E7%A4%BA%E9%97%AE%E9%A2%98"><span class="post-toc-text">1 字体显示问题</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-1-%E5%B0%9D%E8%AF%95%E6%96%B9%E6%B3%95"><span class="post-toc-text">1.1 尝试方法</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-%E4%BB%A3%E7%A0%81%E5%9D%97%E9%97%AE%E9%A2%98"><span class="post-toc-text">2 代码块问题</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-1-%E5%B0%9D%E8%AF%95%E6%96%B9%E6%B3%95"><span class="post-toc-text">2.1 尝试方法</span></a></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-%E5%AD%97%E4%BD%93%E6%98%BE%E7%A4%BA%E9%97%AE%E9%A2%98"><span class="post-toc-text">1 字体显示问题</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-1-%E5%B0%9D%E8%AF%95%E6%96%B9%E6%B3%95"><span class="post-toc-text">1.1 尝试方法</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-%E4%BB%A3%E7%A0%81%E5%9D%97%E9%97%AE%E9%A2%98"><span class="post-toc-text">2 代码块问题</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-1-%E5%B0%9D%E8%AF%95%E6%96%B9%E6%B3%95"><span class="post-toc-text">2.1 尝试方法</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-%E5%B7%A6%E4%B8%8B%E8%A7%92%E6%98%BE%E7%A4%BA%E9%94%99%E8%AF%AF"><span class="post-toc-text">3 左下角显示错误</span></a></li></ol>
         
         <h3 id="1-字体显示问题"><a href="#1-字体显示问题" class="headerlink" title="1 字体显示问题"></a>1 字体显示问题</h3><p>在配置修改好字体文件与相关css文件后，pc端与手机端预览不一致，pc端正常显示，手机为默认字体</p>
 <h4 id="1-1-尝试方法"><a href="#1-1-尝试方法" class="headerlink" title="1.1 尝试方法"></a>1.1 尝试方法</h4><p><del>- css修改</del><br><del>- 媒体查询</del></p>
@@ -110,7 +110,10 @@
 <p><img src="/pic/Markdown.png" alt="渲染错误"></p>
 <p>Typora效果：</p>
 <p><img src="/pic/Markdown_Typora.png" alt="Markdown_Typora"></p>
+<p>解决方法：</p>
+<p>禁用encrypt文章加密插件，该插件会导致格式冲突，但仍需解决该插件的时候能正确渲染代码块</p>
 <h4 id="2-1-尝试方法"><a href="#2-1-尝试方法" class="headerlink" title="2.1 尝试方法"></a>2.1 尝试方法</h4><p>插件（x）</p>
+<h3 id="3-左下角显示错误"><a href="#3-左下角显示错误" class="headerlink" title="3 左下角显示错误"></a>3 左下角显示错误</h3><p>原因：<br><img src="/pic/Markdown_Typora.png" alt="出现Object"><br>导致：<br><img src="/pic/DisplayCorner.png" alt="出现Object"><br>解决方法：<br>正确配置footerLink</p>
 
         <script src="https://giscus.app/client.js"
         data-repo="jiangjiang1116/jiangjiang1116.github.io"
@@ -173,7 +176,7 @@
                     <div class="footer">
     
         <span> 
-            [object Object] 
+             
 
             
                 
@@ -185,9 +188,10 @@
 <!--这是指一条线往下的内容-->
 <div class="footer-last">
     
-            <span>© 2023-1999 S1nbad/链接</span>
+            <span>My Little Blog</span>
             
-                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+                <!-- <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span> -->
+                <span class="footer-last-span-right"><i></i></span>
             
     
 </div>
