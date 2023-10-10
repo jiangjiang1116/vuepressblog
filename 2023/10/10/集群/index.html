@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0,  viewport-fit=cover" name="viewport" />
+    <meta name="description" content="集群" />
+    <meta name="hexo-theme-A4" content="v1.7.1" />
+    <link rel="alternate icon" type="image/webp" href="/img/favicon.webp">
+    <title>Sinbad</title>
+
+    
+        
+<link rel="stylesheet" href="/css/reset.css">
+
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+    
+    
+<link rel="stylesheet" href="/css/ui.css">
+ 
+    
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.3.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+    
+    <body>
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+<div class="header">
+    <div class="header-container">
+        <img style="
+        width: 56px;
+        height: auto;" alt="^-^" cache-control="max-age=86400" class="header-img" src="/img/favicon.png" width="10%"></img>
+        <div class="header-content">
+            <a class="logo" href="/">Sinbad</a> 
+            <span class="description"></span> 
+        </div>
+        
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">Home</a></li>
+            
+        
+            
+                <li><a href="/list/">Post</a></li>
+            
+        
+            
+                <li><a href="/about/">About</a></li>
+            
+        
+            
+                <li><a href="/tags/">Tags</a></li>
+            
+        
+            
+                <li><a href="/moments/">Moments</a></li>
+            
+        
+            
+                <li><a href="/renew/">Updates</a></li>
+            
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+
+    
+        <div class="post-main-title">
+            集群
+        </div>
+      
+    
+
+    <div class="post-md">
+        
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E4%B8%80%E3%80%81%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1"><span class="post-toc-text">一、负载均衡</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E7%AE%97%E6%B3%95"><span class="post-toc-text">负载均衡算法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-%E8%BD%AE%E8%AF%A2%EF%BC%88Round-Robin%EF%BC%89"><span class="post-toc-text">1. 轮询（Round Robin）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-%E5%8A%A0%E6%9D%83%E8%BD%AE%E8%AF%A2%EF%BC%88Weighted-Round-Robbin%EF%BC%89"><span class="post-toc-text">2. 加权轮询（Weighted Round Robbin）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-%E6%9C%80%E5%B0%91%E8%BF%9E%E6%8E%A5%EF%BC%88least-Connections%EF%BC%89"><span class="post-toc-text">3. 最少连接（least Connections）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-%E5%8A%A0%E6%9D%83%E6%9C%80%E5%B0%91%E8%BF%9E%E6%8E%A5%EF%BC%88Weighted-Least-Connection%EF%BC%89"><span class="post-toc-text">4. 加权最少连接（Weighted Least Connection）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-%E9%9A%8F%E6%9C%BA%E7%AE%97%E6%B3%95%EF%BC%88Random%EF%BC%89"><span class="post-toc-text">5. 随机算法（Random）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#6-%E6%BA%90%E5%9C%B0%E5%9D%80%E5%93%88%E5%B8%8C%E6%B3%95-IP-Hash"><span class="post-toc-text">6. 源地址哈希法 (IP Hash)</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%BD%AC%E5%8F%91%E5%AE%9E%E7%8E%B0"><span class="post-toc-text">转发实现</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-HTTP-%E9%87%8D%E5%AE%9A%E5%90%91"><span class="post-toc-text">1. HTTP 重定向</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-DNS-%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90"><span class="post-toc-text">2. DNS 域名解析</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="post-toc-text">3. 反向代理服务器</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-%E7%BD%91%E7%BB%9C%E5%B1%82"><span class="post-toc-text">4. 网络层</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-%E9%93%BE%E8%B7%AF%E5%B1%82"><span class="post-toc-text">5. 链路层</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E4%BA%8C%E3%80%81%E9%9B%86%E7%BE%A4%E4%B8%8B%E7%9A%84-Session-%E7%AE%A1%E7%90%86"><span class="post-toc-text">二、集群下的 Session 管理</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Sticky-Session"><span class="post-toc-text">Sticky Session</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Session-Replication"><span class="post-toc-text">Session Replication</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Session-Server"><span class="post-toc-text">Session Server</span></a></li></ol></li></ol>
+        
+        <p>最近经常听到“轮询”这个词语，”x分钟轮询一次“是表示系统将每隔5分钟执行一次轮询操作，即定期查询某个数据源或资源以获取最新的信息。用于确保系统获得实时或近实时的数据更新，而不是持续监听或推送方式。</p>
+<p>由此，我从 <a target="_blank" rel="noopener" href="https://interview.poetries.top/fe-base-docs/compute-docs/%E9%9B%86%E7%BE%A4.html#session-replication">poetry的网站</a>了解了一些关于集群(属于系统架构)相关知识，补习了部分基础知识：</p>
+<h1 id="一、负载均衡"><a href="#一、负载均衡" class="headerlink" title="一、负载均衡"></a>一、负载均衡</h1><p>集群中的应用服务器（节点）通常被设计成无状态，用户可以请求任何一个节点。</p>
+<p>负载均衡器会根据集群中每个节点的负载情况，将用户请求转发到合适的节点上。</p>
+<p>负载均衡器可以用来实现高可用以及伸缩性：</p>
+<ul>
+<li>高可用：当某个节点故障时，负载均衡器会将用户请求转发到另外的节点上，从而保证所有服务持续可用；</li>
+<li>伸缩性：根据系统整体负载情况，可以很容易地添加或移除节点。</li>
+</ul>
+<p>负载均衡器运行过程包含两个部分：</p>
+<ol>
+<li>根据负载均衡算法得到转发的节点；</li>
+<li>进行转发。</li>
+</ol>
+<h2 id="负载均衡算法"><a href="#负载均衡算法" class="headerlink" title="#负载均衡算法"></a><a target="_blank" rel="noopener" href="https://interview.poetries.top/fe-base-docs/compute-docs/%E9%9B%86%E7%BE%A4.html#%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E7%AE%97%E6%B3%95">#</a>负载均衡算法</h2><h3 id="1-轮询（Round-Robin）"><a href="#1-轮询（Round-Robin）" class="headerlink" title="#1. 轮询（Round Robin）"></a><a target="_blank" rel="noopener" href="https://interview.poetries.top/fe-base-docs/compute-docs/%E9%9B%86%E7%BE%A4.html#_1-%E8%BD%AE%E8%AF%A2%EF%BC%88round-robin%EF%BC%89">#</a>1. 轮询（Round Robin）</h3><p>轮询算法把每个请求轮流发送到每个服务器上。</p>
+<p>下图中，一共有 6 个客户端产生了 6 个请求，这 6 个请求按 (1, 2, 3, 4, 5, 6) 的顺序发送。(1, 3, 5) 的请求会被发送到服务器 1，(2, 4, 6) 的请求会被发送到服务器 2。</p>
+<p><img src="https://s.poetries.work/cos/202203272126913.png" alt="img"></p>
+<p>该算法比较适合每个服务器的性能差不多的场景，如果有性能存在差异的情况下，那么性能较差的服务器可能无法承担过大的负载（下图的 Server 2）。</p>
+<p><img src="https://s.poetries.work/cos/202203272126832.png" alt="img"></p>
+<h3 id="2-加权轮询（Weighted-Round-Robbin）"><a href="#2-加权轮询（Weighted-Round-Robbin）" class="headerlink" title="#2. 加权轮询（Weighted Round Robbin）"></a><a target="_blank" rel="noopener" href="https://interview.poetries.top/fe-base-docs/compute-docs/%E9%9B%86%E7%BE%A4.html#_2-%E5%8A%A0%E6%9D%83%E8%BD%AE%E8%AF%A2%EF%BC%88weighted-round-robbin%EF%BC%89">#</a>2. 加权轮询（Weighted Round Robbin）</h3><p>加权轮询是在轮询的基础上，根据服务器的性能差异，为服务器赋予一定的权值，性能高的服务器分配更高的权值。</p>
+<p>例如下图中，服务器 1 被赋予的权值为 5，服务器 2 被赋予的权值为 1，那么 (1, 2, 3, 4, 5) 请求会被发送到服务器 1，(6) 请求会被发送到服务器 2。</p>
+<p><img src="https://s.poetries.work/cos/202203272126698.png" alt="img"></p>
+<h3 id="3-最少连接（least-Connections）"><a href="#3-最少连接（least-Connections）" class="headerlink" title="#3. 最少连接（least Connections）"></a><a target="_blank" rel="noopener" href="https://interview.poetries.top/fe-base-docs/compute-docs/%E9%9B%86%E7%BE%A4.html#_3-%E6%9C%80%E5%B0%91%E8%BF%9E%E6%8E%A5%EF%BC%88least-connections%EF%BC%89">#</a>3. 最少连接（least Connections）</h3><p>由于每个请求的连接时间不一样，使用轮询或者加权轮询算法的话，可能会让一台服务器当前连接数过大，而另一台服务器的连接过小，造成负载不均衡。</p>
+<p>例如下图中，(1, 3, 5) 请求会被发送到服务器 1，但是 (1, 3) 很快就断开连接，此时只有 (5) 请求连接服务器 1；(2, 4, 6) 请求被发送到服务器 2，只有 (2) 的连接断开，此时 (6, 4) 请求连接服务器 2。该系统继续运行时，服务器 2 会承担过大的负载。</p>
+<p><img src="https://s.poetries.work/cos/202203272127213.png" alt="img"></p>
+<p>最少连接算法就是将请求发送给当前最少连接数的服务器上。</p>
+<p>例如下图中，服务器 1 当前连接数最小，那么新到来的请求 6 就会被发送到服务器 1 上。</p>
+<p><img src="https://s.poetries.work/cos/202203272127043.png" alt="img"></p>
+<h3 id="4-加权最少连接（Weighted-Least-Connection）"><a href="#4-加权最少连接（Weighted-Least-Connection）" class="headerlink" title="#4. 加权最少连接（Weighted Least Connection）"></a><a target="_blank" rel="noopener" href="https://interview.poetries.top/fe-base-docs/compute-docs/%E9%9B%86%E7%BE%A4.html#_4-%E5%8A%A0%E6%9D%83%E6%9C%80%E5%B0%91%E8%BF%9E%E6%8E%A5%EF%BC%88weighted-least-connection%EF%BC%89">#</a>4. 加权最少连接（Weighted Least Connection）</h3><p>在最少连接的基础上，根据服务器的性能为每台服务器分配权重，再根据权重计算出每台服务器能处理的连接数。</p>
+<h3 id="5-随机算法（Random）"><a href="#5-随机算法（Random）" class="headerlink" title="#5. 随机算法（Random）"></a><a target="_blank" rel="noopener" href="https://interview.poetries.top/fe-base-docs/compute-docs/%E9%9B%86%E7%BE%A4.html#_5-%E9%9A%8F%E6%9C%BA%E7%AE%97%E6%B3%95%EF%BC%88random%EF%BC%89">#</a>5. 随机算法（Random）</h3><p>把请求随机发送到服务器上。</p>
+<p>和轮询算法类似，该算法比较适合服务器性能差不多的场景。</p>
+<p><img src="https://s.poetries.work/cos/202203272127312.png" alt="img"></p>
+<h3 id="6-源地址哈希法-IP-Hash"><a href="#6-源地址哈希法-IP-Hash" class="headerlink" title="#6. 源地址哈希法 (IP Hash)"></a><a target="_blank" rel="noopener" href="https://interview.poetries.top/fe-base-docs/compute-docs/%E9%9B%86%E7%BE%A4.html#_6-%E6%BA%90%E5%9C%B0%E5%9D%80%E5%93%88%E5%B8%8C%E6%B3%95-ip-hash">#</a>6. 源地址哈希法 (IP Hash)</h3><p>源地址哈希通过对客户端 IP 计算哈希值之后，再对服务器数量取模得到目标服务器的序号。</p>
+<p>可以保证同一 IP 的客户端的请求会转发到同一台服务器上，用来实现会话粘滞（Sticky Session）</p>
+<p><img src="https://s.poetries.work/cos/202203272127501.png" alt="img"></p>
+<h2 id="转发实现"><a href="#转发实现" class="headerlink" title="#转发实现"></a><a target="_blank" rel="noopener" href="https://interview.poetries.top/fe-base-docs/compute-docs/%E9%9B%86%E7%BE%A4.html#%E8%BD%AC%E5%8F%91%E5%AE%9E%E7%8E%B0">#</a>转发实现</h2><h3 id="1-HTTP-重定向"><a href="#1-HTTP-重定向" class="headerlink" title="#1. HTTP 重定向"></a><a target="_blank" rel="noopener" href="https://interview.poetries.top/fe-base-docs/compute-docs/%E9%9B%86%E7%BE%A4.html#_1-http-%E9%87%8D%E5%AE%9A%E5%90%91">#</a>1. HTTP 重定向</h3><p>HTTP 重定向负载均衡服务器使用某种负载均衡算法计算得到服务器的 IP 地址之后，将该地址写入 HTTP 重定向报文中，状态码为 302。客户端收到重定向报文之后，需要重新向服务器发起请求。</p>
+<p>缺点：</p>
+<ul>
+<li>需要两次请求，因此访问延迟比较高；</li>
+<li>HTTP 负载均衡器处理能力有限，会限制集群的规模。</li>
+</ul>
+<p>该负载均衡转发的缺点比较明显，实际场景中很少使用它。</p>
+<p><img src="https://s.poetries.work/cos/202203272127178.png" alt="img"></p>
+<h3 id="2-DNS-域名解析"><a href="#2-DNS-域名解析" class="headerlink" title="#2. DNS 域名解析"></a><a target="_blank" rel="noopener" href="https://interview.poetries.top/fe-base-docs/compute-docs/%E9%9B%86%E7%BE%A4.html#_2-dns-%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90">#</a>2. DNS 域名解析</h3><p>在 DNS 解析域名的同时使用负载均衡算法计算服务器 IP 地址。</p>
+<p>优点：</p>
+<ul>
+<li>DNS 能够根据地理位置进行域名解析，返回离用户最近的服务器 IP 地址。</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>由于 DNS 具有多级结构，每一级的域名记录都可能被缓存，当下线一台服务器需要修改 DNS 记录时，需要过很长一段时间才能生效。</li>
+</ul>
+<p>大型网站基本使用了 DNS 做为第一级负载均衡手段，然后在内部使用其它方式做第二级负载均衡。也就是说，域名解析的结果为内部的负载均衡服务器 IP 地址。</p>
+<p><img src="https://s.poetries.work/cos/202203272127675.png" alt="img"></p>
+<h3 id="3-反向代理服务器"><a href="#3-反向代理服务器" class="headerlink" title="#3. 反向代理服务器"></a><a target="_blank" rel="noopener" href="https://interview.poetries.top/fe-base-docs/compute-docs/%E9%9B%86%E7%BE%A4.html#_3-%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E6%9C%8D%E5%8A%A1%E5%99%A8">#</a>3. 反向代理服务器</h3><p>反向代理服务器位于源服务器前面，用户的请求需要先经过反向代理服务器才能到达源服务器。反向代理可以用来进行缓存、日志记录等，同时也可以用来做为负载均衡服务器。</p>
+<p>在这种负载均衡转发方式下，客户端不直接请求源服务器，因此源服务器不需要外部 IP 地址，而反向代理需要配置内部和外部两套 IP 地址。</p>
+<p>优点：</p>
+<ul>
+<li>与其它功能集成在一起，部署简单。</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>所有请求和响应都需要经过反向代理服务器，它可能会成为性能瓶颈。</li>
+</ul>
+<h3 id="4-网络层"><a href="#4-网络层" class="headerlink" title="#4. 网络层"></a><a target="_blank" rel="noopener" href="https://interview.poetries.top/fe-base-docs/compute-docs/%E9%9B%86%E7%BE%A4.html#_4-%E7%BD%91%E7%BB%9C%E5%B1%82">#</a>4. 网络层</h3><p>在操作系统内核进程获取网络数据包，根据负载均衡算法计算源服务器的 IP 地址，并修改请求数据包的目的 IP 地址，最后进行转发。</p>
+<p>源服务器返回的响应也需要经过负载均衡服务器，通常是让负载均衡服务器同时作为集群的网关服务器来实现。</p>
+<p>优点：</p>
+<ul>
+<li>在内核进程中进行处理，性能比较高。</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>和反向代理一样，所有的请求和响应都经过负载均衡服务器，会成为性能瓶颈。</li>
+</ul>
+<h3 id="5-链路层"><a href="#5-链路层" class="headerlink" title="#5. 链路层"></a><a target="_blank" rel="noopener" href="https://interview.poetries.top/fe-base-docs/compute-docs/%E9%9B%86%E7%BE%A4.html#_5-%E9%93%BE%E8%B7%AF%E5%B1%82">#</a>5. 链路层</h3><p>在链路层根据负载均衡算法计算源服务器的 MAC 地址，并修改请求数据包的目的 MAC 地址，并进行转发。</p>
+<p>通过配置源服务器的虚拟 IP 地址和负载均衡服务器的 IP 地址一致，从而不需要修改 IP 地址就可以进行转发。也正因为 IP 地址一样，所以源服务器的响应不需要转发回负载均衡服务器，可以直接转发给客户端，避免了负载均衡服务器的成为瓶颈。</p>
+<p>这是一种三角传输模式，被称为直接路由。对于提供下载和视频服务的网站来说，直接路由避免了大量的网络传输数据经过负载均衡服务器。</p>
+<p>这是目前大型网站使用最广负载均衡转发方式，在 Linux 平台可以使用的负载均衡服务器为 LVS（Linux Virtual Server）。</p>
+<p>参考：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="http://www.jscape.com/blog/load-balancing-algorithms">Comparing Load Balancing Algorithms</a></li>
+<li><a target="_blank" rel="noopener" href="http://slideplayer.com/slide/6599069/#">Redirection and Load Balancing</a></li>
+</ul>
+<h1 id="二、集群下的-Session-管理"><a href="#二、集群下的-Session-管理" class="headerlink" title="#二、集群下的 Session 管理"></a><a target="_blank" rel="noopener" href="https://interview.poetries.top/fe-base-docs/compute-docs/%E9%9B%86%E7%BE%A4.html#%E4%BA%8C%E3%80%81%E9%9B%86%E7%BE%A4%E4%B8%8B%E7%9A%84-session-%E7%AE%A1%E7%90%86">#</a>二、集群下的 Session 管理</h1><p>一个用户的 Session 信息如果存储在一个服务器上，那么当负载均衡器把用户的下一个请求转发到另一个服务器，由于服务器没有用户的 Session 信息，那么该用户就需要重新进行登录等操作。</p>
+<h2 id="Sticky-Session"><a href="#Sticky-Session" class="headerlink" title="#Sticky Session"></a><a target="_blank" rel="noopener" href="https://interview.poetries.top/fe-base-docs/compute-docs/%E9%9B%86%E7%BE%A4.html#sticky-session">#</a>Sticky Session</h2><p>需要配置负载均衡器，使得一个用户的所有请求都路由到同一个服务器，这样就可以把用户的 Session 存放在该服务器中。</p>
+<p>缺点：</p>
+<ul>
+<li>当服务器宕机时，将丢失该服务器上的所有 Session。</li>
+</ul>
+<p><img src="https://s.poetries.work/cos/202203272128258.png" alt="img"></p>
+<h2 id="Session-Replication"><a href="#Session-Replication" class="headerlink" title="#Session Replication"></a><a target="_blank" rel="noopener" href="https://interview.poetries.top/fe-base-docs/compute-docs/%E9%9B%86%E7%BE%A4.html#session-replication">#</a>Session Replication</h2><p>在服务器之间进行 Session 同步操作，每个服务器都有所有用户的 Session 信息，因此用户可以向任何一个服务器进行请求。</p>
+<p>缺点：</p>
+<ul>
+<li>占用过多内存；</li>
+<li>同步过程占用网络带宽以及服务器处理器时间。</li>
+</ul>
+<p><img src="https://s.poetries.work/cos/202203272128500.png" alt="img"></p>
+<h2 id="Session-Server"><a href="#Session-Server" class="headerlink" title="#Session Server"></a><a target="_blank" rel="noopener" href="https://interview.poetries.top/fe-base-docs/compute-docs/%E9%9B%86%E7%BE%A4.html#session-server">#</a>Session Server</h2><p>使用一个单独的服务器存储 Session 数据，可以使用传统的 MySQL，也使用 Redis 或者 Memcached 这种内存型数据库。</p>
+<p>优点：</p>
+<ul>
+<li>为了使得大型网站具有伸缩性，集群中的应用服务器通常需要保持无状态，那么应用服务器不能存储用户的会话信息。Session Server 将用户的会话信息单独进行存储，从而保证了应用服务器的无状态。</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>需要去实现存取 Session 的代码。</li>
+</ul>
+<p><img src="https://s.poetries.work/cos/202203272128274.png" alt="img"></p>
+
+        <script src="https://giscus.app/client.js"
+        data-repo="jiangjiang1116/jiangjiang1116.github.io"
+        data-repo-id="R_kgDOKPAthg"
+        data-category="General"
+        data-category-id="DIC_kwDOKPAths4CZPtg"
+        data-mapping="title"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="light"
+        data-lang="zh-CN"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2023-10-10</span>
+            
+                <span>该篇被 JJ</span>
+            
+            
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/Notes/'>
+                            Notes
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+    
+        
+
+     
+</div>
+
+
+
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+             
+
+            
+                
+
+            
+        </span>
+    
+</div>
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>My Little Blog</span>
+            
+                <!-- <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span> -->
+                <span class="footer-last-span-right"><i></i></span>
+            
+    
+</div>
+
+
+    
+<link rel="stylesheet" href="/css/a11y-dark.min.css">
+
+    
+<script src="/js/highlight.min.js"></script>
+
+    
+<script src="/js/highlightjs-line-numbers.js"></script>
+
+
+
+<script>
+    hljs.initHighlightingOnLoad();
+    hljs.initLineNumbersOnLoad();
+</script>
+                </div>
+            
+    </body>
+</html>
