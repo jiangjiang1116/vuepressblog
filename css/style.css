@@ -199,22 +199,7 @@ a
     margin-bottom: 48px;
     border-bottom: 1px dashed var(--line-2);
 }
-.post-title-container {
-    /* 创建一个包裹 .post-title 的容器，以便应用 Flexbox 布局 */
-    display: flex;
-    align-items: center; /* 垂直居中对齐元素 */
-    margin-bottom: 12px;
-}
-
-.post-title {
-    /* 不再需要 display: inline-block;，由容器控制布局 */
-    font-size: 1.6rem;
-    font-weight: 600;
-    line-height: 1.5;
-    /* 移除 margin-bottom，可以通过容器的 margin 控制垂直间距 */
-    color: var(--font-color-1);
-}
-/* .post-title
+.post-title
 {
     display: inline-block;
     font-size: 1.6rem;
@@ -223,7 +208,7 @@ a
     margin-bottom: 12px;
     color: var(--font-color-1);
     /*transition: color ease-in-out .5s;*/
-} */
+}
 .post-title:hover
 {
     color: var(--font-color-0);

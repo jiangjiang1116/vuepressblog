@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0,  viewport-fit=cover" name="viewport" />
+    <meta name="description" content="nginx" />
+    <meta name="hexo-theme-A4" content="v1.7.1" />
+    <link rel="alternate icon" type="image/webp" href="/img/favicon.webp">
+    <title>Sinbad</title>
+
+    
+        
+<link rel="stylesheet" href="/css/reset.css">
+
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+    
+    
+<link rel="stylesheet" href="/css/ui.css">
+ 
+    
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.3.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+    
+    <body>
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+<div class="header">
+    <div class="header-container">
+        <img style="
+        width: 56px;
+        height: auto;" alt="^-^" cache-control="max-age=86400" class="header-img" src="/img/favicon.png" width="10%"></img>
+        <div class="header-content">
+            <a class="logo" href="/">Sinbad</a> 
+            <span class="description"></span> 
+        </div>
+        
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">Home</a></li>
+            
+        
+            
+                <li><a href="/list/">Post</a></li>
+            
+        
+            
+                <li><a href="/about/">About</a></li>
+            
+        
+            
+                <li><a href="/moments/">Moments</a></li>
+            
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+
+    
+        <div class="post-main-title">
+            nginx
+        </div>
+      
+    
+
+    <div class="post-md">
+        
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E8%87%AA%E6%88%91%E6%80%BB%E7%BB%93"><span class="post-toc-text">自我总结</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#nginx%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE"><span class="post-toc-text">nginx基本配置</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%86%85%E7%BD%AE%E5%8F%98%E9%87%8F"><span class="post-toc-text">内置变量</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#nginx%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E7%9A%84%E5%8E%9F%E7%90%86"><span class="post-toc-text">nginx解决跨域的原理</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%B8%B8%E8%A7%81%E5%9C%BA%E6%99%AF"><span class="post-toc-text">常见场景</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%AF%B7%E6%B1%82%E8%BF%87%E6%BB%A4"><span class="post-toc-text">请求过滤</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1"><span class="post-toc-text">负载均衡</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#gzip%E5%8E%8B%E7%BC%A9"><span class="post-toc-text">gzip压缩</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%9B%BE%E7%89%87%E9%98%B2%E7%9B%97%E9%93%BE"><span class="post-toc-text">图片防盗链</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%BC%98%E9%9B%85%E9%99%8D%E7%BA%A7-%E5%A5%87%E6%80%AA%E7%9A%84%E5%90%8D%E5%AD%97"><span class="post-toc-text">优雅降级-奇怪的名字</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#webp%E6%A0%B9%E6%8D%AE%E6%B5%8F%E8%A7%88%E5%99%A8%E8%87%AA%E5%8A%A8%E9%99%8D%E7%BA%A7%E4%B8%BApng"><span class="post-toc-text">webp根据浏览器自动降级为png</span></a></li></ol></li></ol></li></ol></li></ol>
+        
+        <p>了解了一些nginx相关知识，nginx一般用来负载均衡，说白了就是减轻压力。在一些大型项目中对于这种需要用到多节点高可用的情况更多的是通过 <strong>集群</strong> 的方式来解决高可用的问题，业内常用的就是我们常听到的 <code>Kubernetes（k8s）</code>。k8s中默认的网关层 <code>ingress</code> 就是使用 nginx 来搭建的。</p>
+<p>k8s的搭建貌似是<strong>运维</strong>相关，以后再说吧。</p>
+<p>相关链接：<br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903793918738440">前端开发者必备的Nginx知识</a><br><a target="_blank" rel="noopener" href="https://juejin.cn/post/7082655545491980301">作为一名前端，该如何理解Nginx？</a><br><a target="_blank" rel="noopener" href="https://juejin.cn/post/7064378702779891749">前端到底用nginx来做啥</a></p>
+<h1 id="自我总结"><a href="#自我总结" class="headerlink" title="自我总结"></a>自我总结</h1><h2 id="nginx基本配置"><a href="#nginx基本配置" class="headerlink" title="nginx基本配置"></a>nginx基本配置</h2><p><strong>“nginx是一个高性能的反向代理服务器”=&gt;什么是正向代理与反向代理=&gt;nginx配置</strong></p>
+<pre><code class="nginx">events { 
+
+}
+
+http 
+{
+    server
+    { 
+        location path
+        {
+            ...
+        }
+        location path
+        {
+            ...
+        }
+     }
+
+    server
+    {
+        ...
+    }
+
+}
+</code></pre>
+<ul>
+<li><code>main</code>:nginx的全局配置，对全局生效。</li>
+<li><code>events</code>:配置影响nginx服务器或与用户的网络连接。</li>
+<li><code>http</code>：可以嵌套多个server，配置代理，缓存，日志定义等绝大多数功能和第三方模块的配置。</li>
+<li><code>server</code>：配置虚拟主机的相关参数，一个http中可以有多个server。</li>
+<li><code>location</code>：配置请求的路由，以及各种页面的处理情况。</li>
+<li><code>upstream</code>：配置后端服务器具体地址，负载均衡配置不可或缺的部分。</li>
+</ul>
+<h3 id="内置变量"><a href="#内置变量" class="headerlink" title="内置变量"></a>内置变量</h3><p>下面是<code>nginx</code>一些配置中常用的内置全局变量，你可以在配置的任何位置使用它们。</p>
+<table>
+<thead>
+<tr>
+<th>变量名</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>$host</code></td>
+<td>请求信息中的<code>Host</code>，如果请求中没有<code>Host</code>行，则等于设置的服务器名</td>
+</tr>
+<tr>
+<td><code>$request_method</code></td>
+<td>客户端请求类型，如<code>GET</code>、<code>POST</code></td>
+</tr>
+<tr>
+<td><code>$remote_addr</code></td>
+<td>客户端的<code>IP</code>地址</td>
+</tr>
+<tr>
+<td><code>$args</code></td>
+<td>请求中的参数</td>
+</tr>
+<tr>
+<td><code>$content_length</code></td>
+<td>请求头中的<code>Content-length</code>字段</td>
+</tr>
+<tr>
+<td><code>$http_user_agent</code></td>
+<td>客户端agent信息</td>
+</tr>
+<tr>
+<td><code>$http_cookie</code></td>
+<td>客户端cookie信息</td>
+</tr>
+<tr>
+<td><code>$remote_port</code></td>
+<td>客户端的端口</td>
+</tr>
+<tr>
+<td><code>$server_protocol</code></td>
+<td>请求使用的协议，如<code>HTTP/1.0</code>、·HTTP/1.1`</td>
+</tr>
+<tr>
+<td><code>$server_addr</code></td>
+<td>服务器地址</td>
+</tr>
+<tr>
+<td><code>$server_name</code></td>
+<td>服务器名称</td>
+</tr>
+<tr>
+<td><code>$server_port</code></td>
+<td>服务器的端口号</td>
+</tr>
+</tbody></table>
+<p><strong>在哪用到=&gt;反向代理=&gt;跨域</strong></p>
+<h3 id="nginx解决跨域的原理"><a href="#nginx解决跨域的原理" class="headerlink" title="nginx解决跨域的原理"></a>nginx解决跨域的原理</h3><p>例如：</p>
+<ul>
+<li>前端server的域名为：<code>fe.server.com</code></li>
+<li>后端服务的域名为：<code>dev.server.com</code></li>
+</ul>
+<p>现在我在<code>fe.server.com</code>对<code>dev.server.com</code>发起请求一定会出现跨域。</p>
+<p>现在我们只需要启动一个nginx服务器，将<code>server_name</code>设置为<code>fe.server.com</code>,然后设置相应的location以拦截前端需要跨域的请求，最后将请求代理回<code>dev.server.com</code>。如下面的配置：</p>
+<pre><code class="nginx">server {
+        listen       80;
+        server_name  fe.server.com;
+        location / {
+                proxy_pass dev.server.com;
+        }
+}
+</code></pre>
+<p>这样可以绕过浏览器的同源策略：<code>fe.server.com</code>访问<code>nginx</code>的<code>fe.server.com</code>属于同源访问，而<code>nginx</code>对服务端转发的请求不会触发浏览器的同源策略。</p>
+<h2 id="常见场景"><a href="#常见场景" class="headerlink" title="常见场景"></a>常见场景</h2><h3 id="请求过滤"><a href="#请求过滤" class="headerlink" title="请求过滤"></a>请求过滤</h3><p>根据状态码过滤</p>
+<pre><code class="nginx">error_page 500 501 502 503 504 506 /50x.html;
+    location = /50x.html {
+        #将跟路径改编为存放html的路径。
+        root /root/static/html;
+    }
+</code></pre>
+<p>根据URL名称过滤，精准匹配URL，不匹配的URL全部重定向到主页。</p>
+<pre><code class="nginx">location / {
+    rewrite  ^.*$ /index.html  redirect;
+}
+</code></pre>
+<p>根据请求类型过滤。</p>
+<pre><code class="nginx">if ( $request_method !~ ^(GET|POST|HEAD)$ ) {
+        return 403;
+    }
+</code></pre>
+<h3 id="负载均衡"><a href="#负载均衡" class="headerlink" title="负载均衡"></a>负载均衡</h3><p>这块可以参考之前的[集群](<a target="_blank" rel="noopener" href="https://jiangjiang1116.cn/2023/10/08/%E9%9B%86%E7%BE%A4/">Sinbad (jiangjiang1116.cn)</a>)</p>
+<h3 id="gzip压缩"><a href="#gzip压缩" class="headerlink" title="gzip压缩"></a>gzip压缩</h3><p>缩小<strong>静态资源</strong>体积大小，带来相当可观的流量与带宽节省</p>
+<pre><code class="nginx">http {
+    # 开启gzip
+    gzip on;
+    # 增加响应头”Vary: Accept-Encoding” 用来给浏览器识别
+    gzip_vary on;
+    # Nginx做为反向代理的时候启用： any – 无条件压缩所有结果数据
+    gzip_proxied any;
+    # 压缩等级
+    gzip_comp_level 6;
+    # 需要压缩的资源
+    gzip_types text/plain text/css text/xml application/json application/javascript application/rss+xml application/atom+xml image/svg+xml;
+}
+</code></pre>
+<h3 id="图片防盗链"><a href="#图片防盗链" class="headerlink" title="图片防盗链"></a>图片防盗链</h3><pre><code class="nginx">server {
+  listen       80;
+  server_name  *.sherlocked93.club;
+
+  # 图片防盗链
+  location ~* .(gif|jpg|jpeg|png|bmp|swf)$ {
+    valid_referers none blocked 172.168.1.1;  # 只允许本机 IP 外链引用
+    if ($invalid_referer){
+      return 403;
+    }
+  }
+}
+</code></pre>
+<h3 id="优雅降级-奇怪的名字"><a href="#优雅降级-奇怪的名字" class="headerlink" title="优雅降级-奇怪的名字"></a>优雅降级-奇怪的名字</h3><p>Nginx的”优雅降级”指的是在服务器负载较高或出现问题时，通过一种<strong>平滑、非突然</strong>的方式减少或限制服务的资源使用，以确保系统稳定性和可用性。这种方式被称为”优雅”。</p>
+<p>因为它不会导致服务器立刻停止响应请求，而是逐渐降低服务的负载，确保已经接受的请求能够正常完成，同时不再接受新的请求。</p>
+<p>Nginx支持优雅降级的方式，主要通过以下几个技术来实现：</p>
+<ol>
+<li><strong>平滑重载</strong>: Nginx允许在不停止服务的情况下重新加载配置文件。这意味着您可以修改配置文件，例如调整负载均衡策略，而不需要重启Nginx。这有助于平滑地调整服务器的行为。</li>
+<li><strong>权重调整</strong>: Nginx支持为不同的后端服务器或上游服务器池分配权重，您可以逐渐降低某个服务器的权重，从而逐渐将流量从该服务器中剥离。</li>
+<li><strong>限速和连接限制</strong>: 您可以使用Nginx的限速配置来控制每个客户端的请求速率，以确保不会因过多的请求而导致服务器负载过高。</li>
+<li><strong>故障转移</strong>: Nginx还支持故障转移和健康检查机制，当某个后端服务器出现故障时，它可以自动将流量转移到其他健康的服务器上，而不会影响整个服务。</li>
+</ol>
+<p>SSR服务端渲染由于是依赖服务器资源，在流量过大的情况下，有可能会出现服务不可用的情况，返回特殊的错误码例如500等。这时候我们可以实现优雅降级，利用 nginx 做对应的流量分发，当SSR页面返回异常错误的时候，nginx会将流量导入到CSR页面当中。</p>
+<p>优雅降级需要<code>proxy_intercept_errors</code>来开启自定义错误捕获功能，用<code>error_page</code>指令来手动进行降级指向备用地址。</p>
+<pre><code class="nginx">upstream ssrserver {
+    server xxx max_fails=1 fail_timeout=60;
+    server xxx max_fails=1 fail_timeout=60;
+ }
+
+
+# 服务端渲染
+server {
+    listen 80;
+    server_name  ssr-website.com.com;
+
+    location / {
+        proxy_pass http://ssrserver;
+        # 开启自定义错误捕获 如果这里不设置为on的话 会走向nginx处理的默认错误页面
+        proxy_intercept_errors on;
+        # 捕获500系列错误 如果500错误的话降级为下面的csr渲染
+        error_page 500 501 502 503 504 = @csr_location
+
+        # error_page 500 501 502 503 504 = 200 @csr_location
+        # 注意这上面的区别 等号前面没有200 表示 最终返回的状态码已 @csr_location为准 加了200的话表示不管@csr_location返回啥都返回200状态码
+    }
+
+    location @csr_location {
+        proxy_pass http://csr-website.com.com;
+        rewrite_log on;
+    }
+
+}
+
+# 客户端渲染
+server {
+    listen 80;
+    server_name  csr-website.com.com;
+
+    location / {
+        index  index.html index.htm;
+    }
+}
+</code></pre>
+<h4 id="webp根据浏览器自动降级为png"><a href="#webp根据浏览器自动降级为png" class="headerlink" title="webp根据浏览器自动降级为png"></a>webp根据浏览器自动降级为png</h4><p>这套方案不像常见的由nginx把png转为webp的方案，而是先经由图床系统（node服务）上传两份图片:</p>
+<ol>
+<li>一份是原图png</li>
+<li>一份是png压缩为webp的图片（使用的是imagemin-webp）</li>
+</ol>
+<p>然后通过nginx检测头部是否支持webp来返回webp图片，不支持的话就返回原图即可。这其中还做了错误拦截，如果<strong>cos桶丢失webp图片及时浏览器支持webp也要降级为png</strong></p>
+<pre><code class="nginx">http {
+  include       /etc/nginx/mime.types;
+  default_type  application/octet-stream;
+
+  # 设置日志格式
+  log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+  '$status $body_bytes_sent "$http_referer" '
+  '"$http_user_agent" "$http_x_forwarded_for"'
+  '"$proxy_host" "$upstream_addr"';
+
+  access_log  /var/log/nginx/access.log  main;
+
+  sendfile        on;
+  keepalive_timeout  65;
+
+  # 开启gzip
+  gzip on;
+  gzip_vary on;
+  gzip_proxied any;
+  gzip_comp_level 6;
+  gzip_types text/plain text/css text/xml application/json application/javascript application/rss+xml application/atom+xml image/svg+xml;
+
+  # 负载均衡 这里可以是多个cos桶地址即可
+  upstream static_env {
+    server xxx;
+    server xxx;
+  }
+
+  # map 设置变量映射 第一个变量指的是要通过映射的key值 Accpet 第二个值的是变量别名
+  map $http_accept $webp_suffix {
+    # 默认为 空字符串
+    default   "";
+    # 正则匹配如果Accep含有webp字段 设置为.webp值
+    "~*webp"  ".webp";
+  }
+  server {
+
+    listen 8888;
+    absolute_redirect off;    #取消绝对路径的重定向
+    #网站主页路径。此路径仅供参考，具体请您按照实际目录操作。
+    root /usr/share/nginx/html;
+
+    location / {
+      index index.html index.htm;
+      proxy_set_header Host $host;
+      try_files $uri $uri/ /index.html;
+      add_header Cache-Control 'no-cache, max-age=0';
+    }
+
+    # favicon.ico
+    location = /favicon.ico {
+      log_not_found off;
+      access_log off;
+    }
+
+    # robots.txt
+    location = /robots.txt {
+      log_not_found off;
+      access_log off;
+    }
+
+    # 
+    location ~* .(png|jpe?g)$ {
+      # Pass WebP support header to backend
+      # 如果header头部中支持webp
+      if ($webp_suffix ~* webp) {
+        # 先尝试找是否有webp格式图片
+        rewrite ^/(.*).(png|jpe?g)$ /$1.webp break;
+        # 找不到的话 这里捕获404错误 返回原始错误 注意这里的=号 代表最终返回的是@static_img的状态吗
+        error_page 404 = @static_img;
+      }
+      proxy_intercept_errors on;
+      add_header Vary Accept;
+      proxy_pass http://static_env;
+      proxy_set_header Host $http_host;
+      expires 7d;
+      access_log off;
+    }
+
+    location @static_img {
+      #set $complete $schema $server_addr $request_uri;
+      rewrite ^/.+$ $request_uri break;
+      proxy_pass http://static_env;
+      proxy_set_header Host $http_host;
+      expires 7d;
+    }
+
+
+    # assets, media
+    location ~* .(?:css(.map)?|js(.map)?|gif|svg|jfif|ico|cur|heic|webp|tiff?|mp3|m4a|aac|ogg|midi?|wav|mp4|mov|webm|mpe?g|avi|ogv|flv|wmv)$ {
+      proxy_pass http://static_env;
+      proxy_set_header Host $http_host;
+      expires 7d;
+      access_log off;
+    }
+
+
+    error_page   500 502 503 504  /50x.html;
+    location = /50x.html {
+      root   /usr/share/nginx/html;
+    }
+  }
+}
+</code></pre>
+
+        <script src="https://giscus.app/client.js"
+        data-repo="jiangjiang1116/jiangjiang1116.github.io"
+        data-repo-id="R_kgDOKPAthg"
+        data-category="General"
+        data-category-id="DIC_kwDOKPAths4CZPtg"
+        data-mapping="title"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="light"
+        data-lang="zh-CN"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2023-10-11</span>
+            
+                <span>该篇被 江江</span>
+            
+            
+                <span>打上标签:
+                    
+                    
+                        <a href='/tags/%E8%BF%90%E7%BB%B4/'>
+                            运维
+                        </a>
+                    
+                </span>
+             
+             
+                <span>放进分类:
+                    
+                    
+                        <a href='/categories/Notes/'>
+                            Notes
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+    
+        
+
+     
+</div>
+
+
+
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+             
+
+            
+                
+
+            
+        </span>
+    
+</div>
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>My Little Blog</span>
+            
+                <!-- <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span> -->
+                <span class="footer-last-span-right"><i></i></span>
+            
+    
+</div>
+
+
+    
+<link rel="stylesheet" href="/css/a11y-dark.min.css">
+
+    
+<script src="/js/highlight.min.js"></script>
+
+    
+<script src="/js/highlightjs-line-numbers.js"></script>
+
+
+
+<script>
+    hljs.initHighlightingOnLoad();
+    hljs.initLineNumbersOnLoad();
+</script>
+                </div>
+            
+    </body>
+</html>
