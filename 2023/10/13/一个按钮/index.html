@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0,  viewport-fit=cover" name="viewport" />
+    <meta name="description" content="一个按钮" />
+    <meta name="hexo-theme-A4" content="v1.7.1" />
+    <link rel="alternate icon" type="image/webp" href="/img/favicon.webp">
+    <title>Sinbad</title>
+
+    
+        
+<link rel="stylesheet" href="/css/reset.css">
+
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+    
+    
+<link rel="stylesheet" href="/css/ui.css">
+ 
+    
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.3.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+    
+    <body>
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+<div class="header">
+    <div class="header-container">
+        <img style="
+        width: 56px;
+        height: auto;" alt="^-^" cache-control="max-age=86400" class="header-img" src="/img/favicon.png" width="10%"></img>
+        <div class="header-content">
+            <a class="logo" href="/">Sinbad</a> 
+            <span class="description"></span> 
+        </div>
+        
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">Home</a></li>
+            
+        
+            
+                <li><a href="/list/">Post</a></li>
+            
+        
+            
+                <li><a href="/about/">About</a></li>
+            
+        
+            
+                <li><a href="/moments/">Moments</a></li>
+            
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+
+    
+        <div class="post-main-title">
+            一个按钮
+        </div>
+      
+    
+
+    <div class="post-md">
+        
+            
+        
+        <div class="active" id="g-btn">
+</div>
+
+<style>
+    body, html {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    background: #d9deea;
+}
+
+div {
+    position: relative;
+    margin: auto;
+    width: 220px;
+    height: 90px;
+    background: 
+            radial-gradient(circle at 18% 20px, #fff, #fff 6px, transparent 7px, transparent),
+            radial-gradient(circle at 35% 45px, #fff, #fff 1px, transparent 2px, transparent),
+            radial-gradient(circle at 10% 70px, #fff, #fff 2.5px, transparent 3.5px, transparent),
+            radial-gradient(circle at 25% 15px, #fff, #fff 3px, transparent 4px, transparent),
+            radial-gradient(circle at 15% 50px, #fff, #fff 1.5px, transparent 2.5px, transparent),
+            radial-gradient(circle at 30% 75px, #fff, #fff 5px, transparent 6px, transparent),
+            radial-gradient(circle at 5% 30px, #fff, #fff 0.5px, transparent 1.5px, transparent),
+            radial-gradient(circle at 25% 60px, #fff, #fff 0.5px, transparent 1.5px, transparent),
+            radial-gradient(circle at 7% 35px, #fff, #fff 0.5px, transparent 1.5px, transparent),
+            linear-gradient(90deg, #2b303e, #2b303e 50%, #5a81b4 50%, #5a81b4);
+    background-repeat: no-repeat;
+    background-size: 200% 100%;
+    background-position: 100% 0;
+    border-radius: 90px;
+    box-shadow: 
+        0 -3px 4px #999,
+        inset 0 3px 5px #333,
+        0 4px 4px #ffe,
+        inset 0 -3px 5px #ddd;
+    cursor: pointer;
+    overflow: hidden;
+    transition: .5s all;
+
+    &::before,
+    &::after {
+        content: "";
+        position: absolute;
+        transition: .5s all;
+    }
+    &::before {
+        width: 75px;
+        height: 75px;
+        border-radius: 50%;
+        background: #e9cb50;
+        inset: 7.5px;
+        box-shadow: 
+            0 0 5px #333,
+            inset 2px 2px 3px #f8f4e4,
+            inset -2px -2px 3px #665613;
+        z-index: 1;
+    }
+    &::after {
+        width: 70px;
+        height: 70px;
+        inset: 10px;
+        border-radius: 50%;
+        box-shadow: 
+            10px 60px 0 10px #fff,
+            65px 60px 0 5px #fff,
+            95px 70px 0 10px #fff,
+            135px 45px 0 5px #fff,
+            170px 35px 0 10px #fff,
+            195px -5px 0 10px #fff,
+            -10px 0 0 50px rgba(255, 255, 255, .2),
+            15px 0 0 50px rgba(255, 255, 255, .15),
+            40px 0 0 50px rgba(255, 255, 255, .21),
+            10px 40px 0 10px #abc1d9,
+            70px 35px 0 10px #abc1d9,
+            95px 40px 0 10px #abc1d9,
+            135px 20px 0 10px #abc1d9,
+            155px 15px 0 10px #abc1d9,
+            190px -20px 0 10px #abc1d9;
+    }
+}
+div:hover::before {
+    filter: contrast(90%) brightness(110%);
+    scale: 1.05;
+}
+div.active {
+    background-position: 0 0;
+    
+    &::before {
+        translate: 130px;
+        background: 
+            radial-gradient(circle at 50% 20px, #939aa5, #939aa5 6.5px, transparent 7px, transparent),
+            radial-gradient(circle at 35% 45px, #939aa5, #939aa5 11.5px, transparent 12px, transparent),
+            radial-gradient(circle at 72% 50px, #939aa5, #939aa5 8.5px, transparent 9px, transparent),
+            radial-gradient(#cbcdda, #cbcdda);
+    }
+    &::after {
+        transform: translate(130px);
+        box-shadow: 
+            10px 60px 0 10px transparent,
+            65px 60px 0 5px transparent,
+            95px 70px 0 10px transparent,
+            135px 45px 0 5px transparent,
+            170px 35px 0 10px transparent,
+            195px -5px 0 10px transparent,
+            10px 0 0 50px rgba(255, 255, 255, .2),
+            -15px 0 0 50px rgba(255, 255, 255, .15),
+            -40px 0 0 50px rgba(255, 255, 255, .21),
+            10px 40px 0 10px transparent,
+            70px 35px 0 10px transparent,
+            95px 40px 0 10px transparent,
+            135px 20px 0 10px transparent,
+            155px 15px 0 10px transparent,
+            190px -20px 0 10px transparent;
+    }
+}
+</style>
+
+<script>
+    const btn = document.querySelector('#g-btn');
+btn.addEventListener('click', (e) => {
+    btn.setAttribute('class', btn.getAttribute("class") === "active" ? "" : "active");
+});
+</script>
+        <script src="https://giscus.app/client.js"
+        data-repo="jiangjiang1116/jiangjiang1116.github.io"
+        data-repo-id="R_kgDOKPAthg"
+        data-category="General"
+        data-category-id="DIC_kwDOKPAths4CZPtg"
+        data-mapping="title"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="light"
+        data-lang="zh-CN"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2023-10-13</span>
+            
+            
+             
+        
+        </i>
+    </div>
+    
+        
+
+     
+</div>
+
+
+
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+             
+
+            
+                
+
+            
+        </span>
+    
+</div>
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>My Little Blog</span>
+            
+                <!-- <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span> -->
+                <span class="footer-last-span-right"><i></i></span>
+            
+    
+</div>
+
+
+    
+<link rel="stylesheet" href="/css/a11y-dark.min.css">
+
+    
+<script src="/js/highlight.min.js"></script>
+
+    
+<script src="/js/highlightjs-line-numbers.js"></script>
+
+
+
+<script>
+    hljs.initHighlightingOnLoad();
+    hljs.initLineNumbersOnLoad();
+</script>
+                </div>
+            
+    </body>
+</html>
