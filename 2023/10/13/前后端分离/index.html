@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0,  viewport-fit=cover" name="viewport" />
+    <meta name="description" content="前后端分离" />
+    <meta name="hexo-theme-A4" content="v1.7.1" />
+    <link rel="alternate icon" type="image/webp" href="/img/favicon.webp">
+    <title>Sinbad</title>
+
+    
+        
+<link rel="stylesheet" href="/css/reset.css">
+
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+    
+    
+<link rel="stylesheet" href="/css/ui.css">
+ 
+    
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.3.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+    
+    <body>
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+<div class="header">
+    <div class="header-container">
+        <img style="
+        width: 56px;
+        height: auto;" alt="^-^" cache-control="max-age=86400" class="header-img" src="/img/favicon.png" width="10%"></img>
+        <div class="header-content">
+            <a class="logo" href="/">Sinbad</a> 
+            <span class="description"></span> 
+        </div>
+        
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">Home</a></li>
+            
+        
+            
+                <li><a href="/list/">Post</a></li>
+            
+        
+            
+                <li><a href="/about/">About</a></li>
+            
+        
+            
+                <li><a href="/moments/">Moments</a></li>
+            
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+
+    
+        <div class="post-main-title">
+            前后端分离
+        </div>
+      
+    
+
+    <div class="post-md">
+        
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB"><span class="post-toc-text">前后端分离</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%96%87%E6%A1%A3%E8%A7%84%E8%8C%83"><span class="post-toc-text">文档规范</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%A8%A1%E6%8B%9F%E6%95%B0%E6%8D%AE"><span class="post-toc-text">模拟数据</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB-1"><span class="post-toc-text">前后端分离</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%95%B0%E6%8D%AEmock%E6%80%9D%E8%B7%AF"><span class="post-toc-text">数据mock思路</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%9C%AC%E5%9C%B0%E6%A8%A1%E6%8B%9F%E6%95%B0%E6%8D%AE"><span class="post-toc-text">本地模拟数据</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E4%B8%9A%E5%8A%A1%E4%BB%A3%E7%A0%81%E9%87%8C%E7%9B%B4%E6%8E%A5%E6%A8%A1%E6%8B%9F"><span class="post-toc-text">业务代码里直接模拟</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E6%9C%AC%E5%9C%B0%E8%AF%B7%E6%B1%82json"><span class="post-toc-text">本地请求json</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#mock-js-%E8%A1%8C%E4%B8%BA%E6%9C%89%E9%99%90"><span class="post-toc-text">mock.js(行为有限)</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#faker-js%EF%BC%88%E9%9A%8F%E6%9C%BA%E6%95%B0%E6%8D%AE%E7%94%9F%E6%88%90%E5%BA%93%EF%BC%89"><span class="post-toc-text">faker.js（随机数据生成库）</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#API-Mocking"><span class="post-toc-text">API Mocking</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#Online-Mock-API-%E6%9C%8D%E5%8A%A1%EF%BC%9A"><span class="post-toc-text">Online Mock API 服务：</span></a></li></ol></li></ol></li></ol></li></ol></li></ol>
+        
+        <h1 id="前后端分离"><a href="#前后端分离" class="headerlink" title="前后端分离"></a>前后端分离</h1><p>为了解决前后端联调的麻烦，比如前端陷入“等接口”的内耗情况，前端同学本地开发完，确认好各个接口已经按照接口文档约定的参数传参后，无需做后端同学的陪练，可以把最新代码发布到某一个开发环境，让后端同学在写完接口后，在开发环境通过页面进行联调。服务端接口如果有问题，后端同学自己修改完重新发布后，再自己从前端页面测试。如果实在需要更改或再增加参数，再去找前端同学。这样前端同学就可以从“改接口-调接口”的循环圈中解脱出来，把更多精力地放在开发工作上。</p>
+<h2 id="文档规范"><a href="#文档规范" class="headerlink" title="文档规范"></a>文档规范</h2><p>关于接口，不得不提到文档规范，从常见的需求文档到代码中间会经历很多环节，在冗杂的环节中就像传话游戏一样，因此，我认为在整个开发流程中，制订一份规范的书写文档格式尤其重要。其中，写word、markdown文档，更新到公司的交流库上。更好一点的话，使用swagger生成文档。</p>
+<p>参考：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/349e130e40d5">Swagger介绍及使用 - 简书 (jianshu.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1621396">Swagger详细了解一下（长文谨慎阅读）-腾讯云开发者社区-腾讯云 (tencent.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://mccontinuing.github.io/2021/02/02/%E5%88%86%E7%B1%BB-Java%E5%BC%80%E5%8F%91/Swagger%E6%A1%86%E6%9E%B6/">Swagger框架 - Hexo (mccontinuing.github.io)</a></p>
+<p><a target="_blank" rel="noopener" href="https://sevensound.gitee.io/2021/01/05/Express-%E8%BF%9B%E9%98%B6-%E4%BD%BF%E7%94%A8-Swagger-%E6%9E%84%E5%BB%BA-API-%E6%96%87%E6%A1%A3/">Express 进阶：使用 Swagger 构建 API 文档 | Hexo (gitee.io)</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/zjy660358/article/details/118609398">前端看懂Swagger文档_前端人员怎么访问swagger文档-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/u013613428/article/details/89513778">最强PostMan使用教程（6）- 使用Postman导入swagger OPEN API_postman swagger-CSDN博客</a></p>
+<h2 id="模拟数据"><a href="#模拟数据" class="headerlink" title="模拟数据"></a>模拟数据</h2><h3 id="前后端分离-1"><a href="#前后端分离-1" class="headerlink" title="前后端分离"></a>前后端分离</h3><ul>
+<li>后台向前台提供<code>API</code>接口,只负责数据的提供和计算，而完全不处理展现</li>
+<li>前台通过<code>Http(Ajax)</code>请求获取数据,　在浏览器端动态构建界面显示数据</li>
+</ul>
+<p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_48115183/article/details/124742438">前后端分离之数据mock_后端mock_梦的遇见OvO的博客-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1493249">实用！前后端分离开发之前端模拟数据-腾讯云开发者社区-腾讯云 (tencent.com)</a></p>
+<h3 id="数据mock思路"><a href="#数据mock思路" class="headerlink" title="数据mock思路"></a>数据mock思路</h3><ul>
+<li><p>在client端处数据mock</p>
+</li>
+<li><p>在server端mock</p>
+</li>
+</ul>
+<p>第一种方式拦截了请求的发出，直接返回mock的数据，而第二种方式请求则真实地发出，只是在server端进行route拦截<br>前后端分离的方式，就是在传统开发模式中加了一个node层，这样数据mock完全可以在node server端完成，基本思路如下</p>
+<p><img src="https://s.poetries.work/uploads/2022/05/57153f8db75aadd8.png" alt="img"></p>
+<h4 id="本地模拟数据"><a href="#本地模拟数据" class="headerlink" title="本地模拟数据"></a>本地模拟数据</h4><h5 id="业务代码里直接模拟"><a href="#业务代码里直接模拟" class="headerlink" title="业务代码里直接模拟"></a>业务代码里直接模拟</h5><p>在代码里使用假数据，等到获得接口后再注释，灵活性太差，后期太麻烦。</p>
+<h5 id="本地请求json"><a href="#本地请求json" class="headerlink" title="本地请求json"></a>本地请求json</h5><p>把假数据创建一个json文件，本地请求json文件.</p>
+<p>举例：</p>
+<pre><code class="json">{
+  "Code": 200,
+  "Message": "",
+  "Data": {
+    "items": [{
+        "exp1": "fbcc7d9e-9be1",
+        "exp2": "xxx",
+        "enabled": true,
+        "size": 0,
+        "createBy": "",
+        "createTime": "2019-07-12T02:56:54.17+08:00",
+        "updateBy": "",
+        "updateTime": "2019-08-06T03:03:37.859+08:00",
+        "comment": ""
+      }
+    ],
+    "totalCount": 1
+  }
+}
+</code></pre>
+<p>在代码里引用：</p>
+<pre><code class="json">import jsonData from './data.json';
+</code></pre>
+<ul>
+<li><strong>优点</strong>：<ul>
+<li>数据存储和维护简单，可以在文件中手动编辑。</li>
+<li>适用于简单的模拟数据需求。</li>
+</ul>
+</li>
+<li><strong>缺点</strong>：<ul>
+<li>静态数据不支持动态生成，无法模拟实时变化的数据。</li>
+<li>需要额外的步骤将 JSON 数据导入到前端项目中。</li>
+</ul>
+</li>
+</ul>
+<h5 id="mock-js-行为有限"><a href="#mock-js-行为有限" class="headerlink" title="mock.js(行为有限)"></a>mock.js(行为有限)</h5><p><a href="../mock-js/">查看mock.js专题文章</a></p>
+<ul>
+<li><p><strong>优点</strong>：</p>
+<ul>
+<li>强大的数据生成功能，支持生成各种类型的模拟数据。</li>
+<li>能够模拟完整的API接口，包括路由和参数验证。</li>
+<li>能够集成到前端代码中，用于前端开发和测试。</li>
+</ul>
+</li>
+<li><p><strong>缺点</strong>：</p>
+<ul>
+<li>学习曲线较陡峭，配置相对复杂。</li>
+<li>需要在前端项目中引入 Mock.js 库。</li>
+</ul>
+</li>
+</ul>
+<h5 id="faker-js（随机数据生成库）"><a href="#faker-js（随机数据生成库）" class="headerlink" title="faker.js（随机数据生成库）"></a>faker.js（随机数据生成库）</h5><ul>
+<li><p><strong>优点</strong>：</p>
+<ul>
+<li>可以生成随机和逼真的虚构数据。</li>
+<li>适用于填充数据库、生成测试数据等场景。</li>
+</ul>
+</li>
+<li><p><strong>缺点</strong>：</p>
+<ul>
+<li>主要用于生成虚构数据，不适用于模拟实际API接口的响应。</li>
+</ul>
+</li>
+<li><p><strong>示例</strong>（使用 Faker.js）：</p>
+<pre><code class="javascript">javascriptCopy codeconst faker = require('faker');
+
+const data = {
+  users: Array.from({ length: 5 }, () =&gt; ({
+    id: faker.random.number(),
+    name: faker.name.findName(),
+    email: faker.internet.email(),
+  })),
+};
+</code></pre>
+</li>
+</ul>
+<h5 id="API-Mocking"><a href="#API-Mocking" class="headerlink" title="API Mocking"></a>API Mocking</h5><ul>
+<li><p><strong>优点</strong>：</p>
+<ul>
+<li>可以模拟完整的API接口行为，包括路由和参数验证。</li>
+<li>支持在本地或内部网络上运行。</li>
+</ul>
+</li>
+<li><p><strong>缺点</strong>：</p>
+<ul>
+<li><p>需要安装和配置专门的API Mocking工具，增加了工作量。</p>
+</li>
+<li><p>不适用于小型项目和简单的模拟数据需求。</p>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>举例：</strong>JSON Server以及Node+express搭建mock server都属于此类，<a href="%5B%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB%E4%B9%8B%E6%95%B0%E6%8D%AEmock_%E5%90%8E%E7%AB%AFmock_%E6%A2%A6%E7%9A%84%E9%81%87%E8%A7%81OvO%E7%9A%84%E5%8D%9A%E5%AE%A2-CSDN%E5%8D%9A%E5%AE%A2%5D(https://blog.csdn.net/weixin_48115183/article/details/124742438)">参考来源</a></p>
+<ul>
+<li><p><strong>示例</strong>（使用 JSON Server）：</p>
+<pre><code class="json">// db.json
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "John",
+      "email": "john@example.com"
+    },
+    {
+      "id": 2,
+      "name": "Alice",
+      "email": "alice@example.com"
+    }
+  ]
+}
+</code></pre>
+</li>
+</ul>
+<h5 id="Online-Mock-API-服务："><a href="#Online-Mock-API-服务：" class="headerlink" title="Online Mock API 服务："></a><strong>Online Mock API 服务</strong>：</h5><ul>
+<li><p><strong>优点</strong>：</p>
+<ul>
+<li>可以快速获取模拟数据，无需自己维护模拟数据。</li>
+<li>适用于简单的测试和演示。</li>
+</ul>
+</li>
+<li><p><strong>缺点</strong>：</p>
+<ul>
+<li>可能不适用于敏感数据，因为数据在外部服务上生成。</li>
+</ul>
+</li>
+<li><p><strong>示例</strong>（使用 JSONPlaceholder）：</p>
+<pre><code class="javascript">javascriptCopy codefetch('https://jsonplaceholder.typicode.com/users')
+  .then(response =&gt; response.json())
+  .then(data =&gt; {
+    console.log(data);
+  });
+</code></pre>
+</li>
+</ul>
+
+        <script src="https://giscus.app/client.js"
+        data-repo="jiangjiang1116/jiangjiang1116.github.io"
+        data-repo-id="R_kgDOKPAthg"
+        data-category="General"
+        data-category-id="DIC_kwDOKPAths4CZPtg"
+        data-mapping="title"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="light"
+        data-lang="zh-CN"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2023-10-13</span>
+            
+                <span>该篇被 江江</span>
+            
+            
+                <span>打上标签:
+                    
+                    
+                        <a href='/tags/%E5%89%8D%E5%90%8E%E7%AB%AF/'>
+                            前后端
+                        </a>
+                    
+                </span>
+             
+             
+                <span>放进分类:
+                    
+                    
+                        <a href='/categories/Notes/'>
+                            Notes
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+    
+        
+
+     
+</div>
+
+
+
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+             
+
+            
+                
+
+            
+        </span>
+    
+</div>
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>My Little Blog</span>
+            
+                <!-- <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span> -->
+                <span class="footer-last-span-right"><i></i></span>
+            
+    
+</div>
+
+
+    
+<link rel="stylesheet" href="/css/a11y-dark.min.css">
+
+    
+<script src="/js/highlight.min.js"></script>
+
+    
+<script src="/js/highlightjs-line-numbers.js"></script>
+
+
+
+<script>
+    hljs.initHighlightingOnLoad();
+    hljs.initLineNumbersOnLoad();
+</script>
+                </div>
+            
+    </body>
+</html>

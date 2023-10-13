@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0,  viewport-fit=cover" name="viewport" />
+    <meta name="description" content="mock.js" />
+    <meta name="hexo-theme-A4" content="v1.7.1" />
+    <link rel="alternate icon" type="image/webp" href="/img/favicon.webp">
+    <title>Sinbad</title>
+
+    
+        
+<link rel="stylesheet" href="/css/reset.css">
+
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+    
+    
+<link rel="stylesheet" href="/css/ui.css">
+ 
+    
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.3.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+    
+    <body>
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+<div class="header">
+    <div class="header-container">
+        <img style="
+        width: 56px;
+        height: auto;" alt="^-^" cache-control="max-age=86400" class="header-img" src="/img/favicon.png" width="10%"></img>
+        <div class="header-content">
+            <a class="logo" href="/">Sinbad</a> 
+            <span class="description"></span> 
+        </div>
+        
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">Home</a></li>
+            
+        
+            
+                <li><a href="/list/">Post</a></li>
+            
+        
+            
+                <li><a href="/about/">About</a></li>
+            
+        
+            
+                <li><a href="/moments/">Moments</a></li>
+            
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+
+    
+        <div class="post-main-title">
+            mock.js
+        </div>
+      
+    
+
+    <div class="post-md">
+        
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Mock-js%E4%BD%BF%E7%94%A8%E8%AF%A6%E8%A7%A3"><span class="post-toc-text">Mock.js使用详解</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Mock-js%E5%AE%9E%E7%8E%B0%E7%9A%84%E5%8A%9F%E8%83%BD"><span class="post-toc-text">Mock.js实现的功能</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Mock%E5%AE%89%E8%A3%85"><span class="post-toc-text">Mock安装</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#cdn%E5%BC%95%E7%94%A8-Mock-js-mockjs-com"><span class="post-toc-text">cdn引用(Mock.js (mockjs.com))</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Node%E4%B8%8B%E4%BD%BF%E7%94%A8"><span class="post-toc-text">Node下使用</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#RequireJS-AMD"><span class="post-toc-text">RequireJS (AMD)</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%BD%BF%E7%94%A8%E8%AF%AD%E6%B3%95"><span class="post-toc-text">使用语法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%95%B0%E6%8D%AE%E6%A8%A1%E6%9D%BF%E5%AE%9A%E4%B9%89%E8%A7%84%E8%8C%83"><span class="post-toc-text">数据模板定义规范</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E7%94%9F%E6%88%90%E8%A7%84%E5%88%99%E5%92%8C%E7%A4%BA%E4%BE%8B"><span class="post-toc-text">生成规则和示例</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%95%B0%E6%8D%AE%E5%8D%A0%E4%BD%8D%E7%AC%A6%E5%AE%9A%E4%B9%89%E8%A7%84%E8%8C%83"><span class="post-toc-text">数据占位符定义规范</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Mock-mock"><span class="post-toc-text">Mock.mock()</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Mock-mock-template"><span class="post-toc-text">Mock.mock( template )</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Mock-mock-rurl-template"><span class="post-toc-text">Mock.mock( rurl, template )</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Mock-mock-rurl-function-options"><span class="post-toc-text">Mock.mock( rurl, function( options ) )</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Mock-setup"><span class="post-toc-text">Mock.setup()</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Mock-Random"><span class="post-toc-text">Mock.Random</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AE%80%E5%8D%95%E6%9E%84%E5%BB%BA%E4%B8%80%E5%A5%97mock-server"><span class="post-toc-text">简单构建一套mock-server</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#json-server-%E6%90%AD%E9%85%8D-mock-js"><span class="post-toc-text">json-server 搭配 mock.js</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%AB%AF%E5%8F%A3%E4%BB%A3%E7%90%86"><span class="post-toc-text">端口代理</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%96%87%E4%BB%B6%E6%94%B9%E5%8A%A8%E8%87%AA%E5%8A%A8%E5%88%B7%E6%96%B0"><span class="post-toc-text">文件改动自动刷新</span></a></li></ol></li></ol>
+        
+        <h2 id="Mock-js使用详解"><a href="#Mock-js使用详解" class="headerlink" title="Mock.js使用详解"></a>Mock.js使用详解</h2><h3 id="Mock-js实现的功能"><a href="#Mock-js实现的功能" class="headerlink" title="Mock.js实现的功能"></a>Mock.js实现的功能</h3><ul>
+<li>让前端攻城师独立于后端进行开发</li>
+<li>通过随机数据，模拟各种场景</li>
+<li>不需要修改既有代码，就可以拦截 <code>Ajax</code> 请求，返回模拟的响应数据</li>
+<li>支持生成随机的文本、数字、布尔值、日期、邮箱、链接、图片、颜色等。</li>
+</ul>
+<h3 id="Mock安装"><a href="#Mock安装" class="headerlink" title="Mock安装"></a>Mock安装</h3><h4 id="cdn引用-Mock-js-mockjs-com"><a href="#cdn引用-Mock-js-mockjs-com" class="headerlink" title="cdn引用(Mock.js (mockjs.com))"></a>cdn引用(<a target="_blank" rel="noopener" href="http://mockjs.com/">Mock.js (mockjs.com)</a>)</h4><p>可以通过直接在HTML页面中引用 Mock.js 的CDN链接来使用它，而不必使用npm来下载和安装。</p>
+<p><a target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/6528f70ac458853aef340ea8.png">预览</a></p>
+<pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Mock.js 示例&lt;/title&gt;
+    &lt;style&gt;
+        .input-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .input-container input {
+            margin-bottom: 10px;
+        }
+        .button-container {
+            display: flex;
+        }
+        .button-container button {
+            margin-right: 10px;
+        }
+    &lt;/style&gt;
+    &lt;script src="https://cdn.jsdelivr.net/npm/mockjs/dist/mock.min.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Mock.js 示例&lt;/h1&gt;
+    &lt;div id="mock-data"&gt;
+        &lt;div class="input-container"&gt;
+            &lt;input type="text" id="name-input" placeholder="姓名"&gt;
+            &lt;input type="number" id="age-input" placeholder="年龄"&gt;
+            &lt;input type="text" id="address-input" placeholder="地址"&gt;
+            &lt;input type="email" id="email-input" placeholder="邮箱"&gt;
+        &lt;/div&gt;
+        &lt;div class="button-container"&gt;
+            &lt;button id="generate-name"&gt;生成姓名&lt;/button&gt;
+            &lt;button id="generate-age"&gt;生成年龄&lt;/button&gt;
+            &lt;button id="generate-address"&gt;生成地址&lt;/button&gt;
+            &lt;button id="generate-email"&gt;生成邮箱&lt;/button&gt;
+        &lt;/div&gt;
+        &lt;button id="clear-data"&gt;清除数据&lt;/button&gt;
+        &lt;button id="generate-all"&gt;生成全部&lt;/button&gt;
+    &lt;/div&gt;
+
+    &lt;script&gt;
+        const nameInput = document.getElementById('name-input');
+        const ageInput = document.getElementById('age-input');
+        const addressInput = document.getElementById('address-input');
+        const emailInput = document.getElementById('email-input');
+        const generateNameButton = document.getElementById('generate-name');
+        const generateAgeButton = document.getElementById('generate-age');
+        const generateAddressButton = document.getElementById('generate-address');
+        const generateEmailButton = document.getElementById('generate-email');
+        const clearDataButton = document.getElementById('clear-data');
+        const generateAllButton = document.getElementById('generate-all');
+
+        generateNameButton.addEventListener('click', () =&gt; {
+            nameInput.value = Mock.mock('@cname');
+        });
+
+        generateAgeButton.addEventListener('click', () =&gt; {
+            ageInput.value = Mock.mock('@integer(18,60)');
+        });
+
+        generateAddressButton.addEventListener('click', () =&gt; {
+            addressInput.value = Mock.mock('@county(true)');
+        });
+
+        generateEmailButton.addEventListener('click', () =&gt; {
+            emailInput.value = Mock.mock('@email');
+        });
+
+        clearDataButton.addEventListener('click', () =&gt; {
+            nameInput.value = '';
+            ageInput.value = '';
+            addressInput.value = '';
+            emailInput.value = '';
+        });
+
+        generateAllButton.addEventListener('click', () =&gt; {
+            nameInput.value = Mock.mock('@cname');
+            ageInput.value = Mock.mock('@integer(18,60)');
+            addressInput.value = Mock.mock('@county(true)');
+            emailInput.value = Mock.mock('@email');
+        });
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h4 id="Node下使用"><a href="#Node下使用" class="headerlink" title="Node下使用"></a>Node下使用</h4><pre><code class="javascript"># 安装
+npm install mockjs
+ 
+       
+    
+// 使用 Mock
+var Mock = require('mockjs')
+var data = Mock.mock({
+    // 属性 list 的值是一个数组，其中含有 1 到 10 个元素
+    'list|1-10': [{
+        // 属性 id 是一个自增数，起始值为 1，每次增 1
+        'id|+1': 1
+    }]
+})
+// 输出结果
+console.log(JSON.stringify(data, null, 4))
+</code></pre>
+<h4 id="RequireJS-AMD"><a href="#RequireJS-AMD" class="headerlink" title="RequireJS (AMD)"></a>RequireJS (AMD)</h4><pre><code class="javascript">// 配置 Mock 路径
+require.config({
+    paths: {
+        mock: 'http://mockjs.com/dist/mock'
+    }
+})
+// 加载 Mock
+require(['mock'], function(Mock){
+    // 使用 Mock
+    var data = Mock.mock({
+        'list|1-10': [{
+            'id|+1': 1
+        }]
+    })
+    // 输出结果
+    document.body.innerHTML +=
+        '&lt;pre&gt;' +
+        JSON.stringify(data, null, 4) +
+        '&lt;/pre&gt;'
+})
+</code></pre>
+<h3 id="使用语法"><a href="#使用语法" class="headerlink" title="使用语法"></a>使用语法</h3><ul>
+<li><pre><code>Mock.js
+</code></pre>
+<p>的语法规范包括两部分</p>
+<ul>
+<li>数据模板定义规范</li>
+<li>数据占位符定义规范</li>
+</ul>
+</li>
+</ul>
+<h4 id="数据模板定义规范"><a href="#数据模板定义规范" class="headerlink" title="数据模板定义规范"></a>数据模板定义规范</h4><ul>
+<li>数据模板中的每个属性由 3 部分构成：属性名、生成规则、属性值</li>
+</ul>
+<pre><code class="javascript">// 属性名   name
+// 生成规则 rule
+// 属性值   value
+'name|rule': value
+</code></pre>
+<ul>
+<li>属性名 和 生成规则 之间用竖线 <code>|</code> 分隔</li>
+<li>生成规则 是可选的</li>
+<li>生成规则 有 7 种格式<ul>
+<li><code>'name|min-max': value</code></li>
+<li><code>'name|count': value</code></li>
+<li><code>'name|min-max.dmin-dmax': value</code></li>
+<li><code>'name|min-max.dcount': value</code></li>
+<li><code>'name|count.dmin-dmax': value</code></li>
+<li><code>'name|count.dcount': value</code></li>
+<li><code>'name|+step': value</code></li>
+</ul>
+</li>
+<li>生成规则 的 含义 需要依赖 属性值的类型 才能确定</li>
+<li>属性值 中可以含有 <code>@</code>占位符</li>
+<li>属性值 还指定了最终值的初始值和类型</li>
+</ul>
+<h4 id="生成规则和示例"><a href="#生成规则和示例" class="headerlink" title="生成规则和示例"></a>生成规则和示例</h4><ul>
+<li><p>属性值是字符串 <code>String</code></p>
+<ul>
+<li><pre><code>'name|min-max': string
+</code></pre>
+<ul>
+<li>通过重复 <code>string</code>生成一个字符串，重复次数大于等于<code>min</code>，小于等于 <code>max</code></li>
+</ul>
+</li>
+<li><pre><code>'name|count': string
+</code></pre>
+<ul>
+<li>通过重复 <code>string</code>生成一个字符串，重复次数等于 <code>count</code>。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>属性值是数字<code>Number</code></p>
+<ul>
+<li><pre><code>'name|+1': number
+</code></pre>
+<ul>
+<li>属性值自动加 <code>1</code>，初始值为 <code>number</code></li>
+</ul>
+</li>
+<li><pre><code>'name|min-max': number
+</code></pre>
+<ul>
+<li>生成一个大于等于 <code>min</code>、小于等于 <code>max</code>的整数，属性值 <code>number</code> 只是用来确定类型</li>
+</ul>
+</li>
+<li><pre><code>'name|min-max.dmin-dmax': number
+</code></pre>
+<ul>
+<li>生成一个浮点数，整数部分大于等于<code>min</code>、小于等于 <code>max</code>，小数部分保留 <code>dmin</code> 到 <code>dmax</code> 位</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code class="javascript">Mock.mock({
+    'number1|1-100.1-10': 1,
+    'number2|123.1-10': 1,
+    'number3|123.3': 1,
+    'number4|123.10': 1.123
+})
+// =&gt;
+{
+    "number1": 12.92,
+    "number2": 123.51,
+    "number3": 123.777,
+    "number4": 123.1231091814
+}    
+</code></pre>
+<ul>
+<li><p>属性值是布尔型 <code>Boolean</code></p>
+<ul>
+<li><pre><code>'name|1': boolean
+</code></pre>
+<ul>
+<li>随机生成一个布尔值，值为 <code>true</code> 的概率是 <code>1/2</code>，值为 <code>false</code> 的概率同样是 <code>1/2</code></li>
+</ul>
+</li>
+<li><pre><code>'name|min-max': value
+</code></pre>
+<ul>
+<li>随机生成一个布尔值，值为 <code>value</code> 的概率是<code>min / (min + max)</code>，值为 <code>!value</code>的概率是 <code>max / (min + max)</code>\</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>属性值是对象 <code>Object</code></p>
+<ul>
+<li><pre><code>'name|count': object
+</code></pre>
+<ul>
+<li>从属性值 <code>object</code>中随机选取 <code>count</code>个属性</li>
+</ul>
+</li>
+<li><pre><code>'name|min-max': object
+</code></pre>
+<ul>
+<li>从属性值 <code>object</code>中随机选取 <code>min</code> 到 <code>max</code> 个属性</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>属性值是数组 <code>Array</code></p>
+<ul>
+<li><pre><code>'name|1': array
+</code></pre>
+<ul>
+<li>从属性值 <code>array</code> 中随机选取 <code>1</code>个元素，作为最终值</li>
+</ul>
+</li>
+<li><pre><code>'name|+1': array
+</code></pre>
+<ul>
+<li>从属性值 <code>array</code>中顺序选取 <code>1</code> 个元素，作为最终值</li>
+</ul>
+</li>
+<li><pre><code>'name|min-max': array
+</code></pre>
+<ul>
+<li>通过重复属性值<code>array</code> 生成一个新数组，重复次数大于等于 <code>min</code>，小于等于 <code>max</code></li>
+</ul>
+</li>
+<li><pre><code>'name|count': array
+</code></pre>
+<ul>
+<li>通过重复属性值 <code>array</code>生成一个新数组，重复次数为 <code>count</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>属性值是函数 <code>Function</code></p>
+<ul>
+<li><pre><code>'name': function
+</code></pre>
+<ul>
+<li>执行函数 <code>function</code>，取其返回值作为最终的属性值，函数的上下文为属性 <code>'name'</code> 所在的对象</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>属性值是正则表达式 <code>RegExp</code></p>
+<ul>
+<li><pre><code>'name': regexp
+</code></pre>
+<ul>
+<li>根据正则表达式 <code>regexp</code> 反向生成可以匹配它的字符串。用于生成自定义格式的字符串</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code class="javascript">Mock.mock({
+    'regexp1': /[a-z][A-Z][0-9]/,
+    'regexp2': /\w\W\s\S\d\D/,
+    'regexp3': /\d{5,10}/
+})
+// =&gt;
+{
+    "regexp1": "pJ7",
+    "regexp2": "F)\fp1G",
+    "regexp3": "561659409"
+}   
+</code></pre>
+<h4 id="数据占位符定义规范"><a href="#数据占位符定义规范" class="headerlink" title="数据占位符定义规范"></a>数据占位符定义规范</h4><blockquote>
+<p>占位符,只是在属性值字符串中占个位置，并不出现在最终的属性值中</p>
+</blockquote>
+<ul>
+<li>占位符 的格式为</li>
+</ul>
+<pre><code class="javascript">@占位符
+@占位符(参数 [, 参数])  
+</code></pre>
+<ul>
+<li>用 <code>@</code>来标识其后的字符串是 占位符</li>
+<li>占位符 引用的是 <code>Mock.Random</code> 中的方法</li>
+<li>通过 <code>Mock.Random.extend()</code> 来扩展自定义占位符</li>
+<li>占位符 也可以引用 数据模板 中的属性</li>
+<li>占位符 会优先引用 数据模板 中的属性</li>
+<li>占位符 支持 相对路径 和 绝对路径</li>
+</ul>
+<pre><code class="javascript">Mock.mock({
+    name: {
+        first: '@FIRST',
+        middle: '@FIRST',
+        last: '@LAST',
+        full: '@first @middle @last'
+    }
+})
+// =&gt;
+{
+    "name": {
+        "first": "Charles",
+        "middle": "Brenda",
+        "last": "Lopez",
+        "full": "Charles Brenda Lopez"
+    }
+}   
+</code></pre>
+<h3 id="Mock-mock"><a href="#Mock-mock" class="headerlink" title="Mock.mock()"></a>Mock.mock()</h3><h4 id="Mock-mock-template"><a href="#Mock-mock-template" class="headerlink" title="Mock.mock( template )"></a>Mock.mock( template )</h4><ul>
+<li>根据数据模板生成模拟数据</li>
+</ul>
+<pre><code class="html">&lt;!-- （必选）加载 Mock --&gt;
+&lt;script src="http://mockjs.com/dist/mock.js"&gt;&lt;/script&gt;
+ 
+       
+    
+// Mock.mock( template )
+var template = {
+    'title': 'Syntax Demo',
+
+    'string1|1-10': '★',
+    'string2|3': 'value',
+
+    'number1|+1': 100,
+    'number2|1-100': 100,
+    'number3|1-100.1-10': 1,
+    'number4|123.1-10': 1,
+    'number5|123.3': 1,
+    'number6|123.10': 1.123,
+
+    'boolean1|1': true,
+    'boolean2|1-2': true,
+
+    'object1|2-4': {
+        '110000': '北京市',
+        '120000': '天津市',
+        '130000': '河北省',
+        '140000': '山西省'
+    },
+    'object2|2': {
+        '310000': '上海市',
+        '320000': '江苏省',
+        '330000': '浙江省',
+        '340000': '安徽省'
+    },
+
+    'array1|1': ['AMD', 'CMD', 'KMD', 'UMD'],
+    'array2|1-10': ['Mock.js'],
+    'array3|3': ['Mock.js'],
+
+    'function': function() {
+        return this.title
+    }
+}
+var data = Mock.mock(template)
+
+$('&lt;pre&gt;').text(JSON.stringify(data, null, 4))
+    .appendTo('body')
+ 
+       
+    
+//res
+{
+    "title": "Syntax Demo",
+    "string1": "★★★",
+    "string2": "valuevaluevalue",
+    "number1": 100,
+    "number2": 48,
+    "number3": 99.05,
+    "number4": 123.6,
+    "number5": 123.516,
+    "number6": 123.1236370317,
+    "boolean1": false,
+    "boolean2": true,
+    "object1": {
+        "120000": "天津市",
+        "130000": "河北省"
+    },
+    "object2": {
+        "320000": "江苏省",
+        "330000": "浙江省"
+    },
+    "array1": "KMD",
+    "array2": [
+        "Mock.js"
+    ],
+    "array3": [
+        "Mock.js",
+        "Mock.js",
+        "Mock.js"
+    ],
+    "function": "Syntax Demo"
+} 
+</code></pre>
+<h4 id="Mock-mock-rurl-template"><a href="#Mock-mock-rurl-template" class="headerlink" title="Mock.mock( rurl, template )"></a>Mock.mock( rurl, template )</h4><ul>
+<li>记录数据模板。当拦截到匹配 <code>rurl</code> 的 <code>Ajax</code> 请求时，将根据数据模板 <code>template</code>生成模拟数据，并作为响应数据返回</li>
+</ul>
+<pre><code class="html">&lt;!-- （必选）加载 Mock --&gt;
+&lt;script src="http://mockjs.com/dist/mock.js"&gt;&lt;/script&gt;
+ 
+       
+    
+// Mock.mock(rurl, template)
+Mock.mock(/\.json/, {
+    'list|1-10': [{
+        'id|+1': 1,
+        'email': '@EMAIL'
+    }]
+})
+$.ajax({
+    url: '1.json',
+    dataType: 'json'
+}).done(function(data, status, jqXHR){
+    $('&lt;pre&gt;').text(JSON.stringify(data, null, 4))
+        .appendTo('body')
+})
+ 
+       
+    
+{
+    "list": [
+        {
+            "id": 1,
+            "email": "k.sejuwxvego@xcwc.中国互联.公司"
+        },
+        {
+            "id": 2,
+            "email": "f.hjns@rhivyrvhpb.ve"
+        },
+        {
+            "id": 3,
+            "email": "g.bdwuuhm@czoybmyp.ms"
+        },
+        {
+            "id": 4,
+            "email": "n.tkgs@javvkxz.bf"
+        }
+    ]
+}  
+</code></pre>
+<h4 id="Mock-mock-rurl-function-options"><a href="#Mock-mock-rurl-function-options" class="headerlink" title="Mock.mock( rurl, function( options ) )"></a>Mock.mock( rurl, function( options ) )</h4><ul>
+<li>记录用于生成响应数据的函数。当拦截到匹配 <code>rurl</code> 的 <code>Ajax</code> 请求时，函数 <code>function(options)</code>将被执行，并把执行结果作为响应数据返回</li>
+</ul>
+<pre><code class="javascript">// Mock.mock(rurl, function(options))
+Mock.mock(/\.json/, function(options) {
+    return options
+})
+$.ajax({
+    url: 'hello.json',
+    dataType: 'json'
+}).done(function(data, status, jqXHR) {
+    $('&lt;pre&gt;').text(JSON.stringify(data, null, 4))
+        .appendTo('body')
+})
+$.ajax({
+    url: 'hello.json',
+    dataType: 'json',
+    data: {
+        foo: 1,
+        bar: 2,
+        faz: 3
+    }
+}).done(function(data, status, jqXHR) {
+    $('&lt;pre&gt;').text(JSON.stringify(data, null, 4))
+        .appendTo('body')
+})
+$.ajax({
+    url: 'hello.json',
+    type: 'post',
+    dataType: 'json',
+    data: {
+        foo: 1,
+        bar: 2,
+        faz: 3
+    }
+}).done(function(data, status, jqXHR) {
+    $('&lt;pre&gt;').text(JSON.stringify(data, null, 4))
+        .appendTo('body')
+})
+
+ 
+
+    
+{
+    "url": "hello.json?foo=1&amp;bar=2&amp;faz=3",
+    "type": "GET",
+    "body": null
+}
+{
+    "url": "hello.json",
+    "type": "GET",
+    "body": null
+}
+{
+    "url": "hello.json",
+    "type": "POST",
+    "body": "foo=1&amp;bar=2&amp;faz=3"
+}  
+</code></pre>
+<h4 id="Mock-setup"><a href="#Mock-setup" class="headerlink" title="Mock.setup()"></a>Mock.setup()</h4><ul>
+<li><pre><code>Mock.setup( settings )
+</code></pre>
+<ul>
+<li>配置拦截 <code>Ajax</code> 请求时的行为。支持的配置项有：<code>timeout</code></li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>指定被拦截的 <code>Ajax</code> 请求的响应时间，单位是毫秒。值可以是正整数，例如 <code>400</code>，表示 <code>400</code> 毫秒 后才会返回响应内容；也可以是横杠 <code>'-'</code> 风格的字符串，例如 <code>'200-600'</code>，表示响应时间介于 <code>200</code> 和 <code>600</code> 毫秒之间。默认值是<code>'10-100'</code></p>
+</blockquote>
+<pre><code class="javascript">Mock.setup({
+    timeout: 400
+})
+Mock.setup({
+    timeout: '200-600'
+})
+</code></pre>
+<ul>
+<li>目前，接口 <code>Mock.setup( settings )</code>仅用于配置 <code>Ajax</code> 请求</li>
+</ul>
+<h4 id="Mock-Random"><a href="#Mock-Random" class="headerlink" title="Mock.Random"></a>Mock.Random</h4><ul>
+<li><code>Mock.Random</code> 是一个工具类，用于生成各种随机数据</li>
+<li><code>Mock.Random</code>的方法在数据模板中称为『占位符』，书写格式为 <code>@</code>占位符(参数 [, 参数])</li>
+</ul>
+<pre><code class="javascript">var Random = Mock.Random
+Random.email()
+// =&gt; "n.clark@miller.io"
+Mock.mock('@email')
+// =&gt; "y.lee@lewis.org"
+Mock.mock( { email: '@email' } )
+// =&gt; { email: "v.lewis@hall.gov" } 
+</code></pre>
+<h2 id="简单构建一套mock-server"><a href="#简单构建一套mock-server" class="headerlink" title="简单构建一套mock-server"></a>简单构建一套mock-server</h2><blockquote>
+<p>为了更好的分工合作，让前端能在不依赖后端环境的情况下进行开发，其中一种手段就是为前端开发者提供一个 web 容器，这个本地环境就是 mock-server</p>
+</blockquote>
+<p><strong>一个比较好的 mock-server 该有的能力</strong></p>
+<ul>
+<li>与线上环境一致的接口地址，每次构建前端代码时不需要修改调用接口的代码</li>
+<li>所改即所得，具有热更新的能力，每次增加修改 <code>mock</code> 接口时不需要重启 <code>mock</code> 服务，更不用重启前端构建服务</li>
+<li>能配合 <code>Webpack</code></li>
+<li><code>mock</code> 数据可以由工具生成不需要自己手动写</li>
+<li>能模拟 <code>POST</code>、<code>GET</code> 请求</li>
+</ul>
+<p><strong>搭建主要思路</strong></p>
+<blockquote>
+<p>以 <code>json-server</code> 作为 <code>mock</code> 服务器， <code>mock.js</code> 生成<code>mock</code> 数据，利用 <code>gulp + nodemon + browser-sync</code> 监听<code>mock</code>文件的改动重启 <code>node</code> 服务，刷新浏览器，以此达到一种相对完美的 <code>mock-server</code>要求</p>
+</blockquote>
+<h3 id="json-server-搭配-mock-js"><a href="#json-server-搭配-mock-js" class="headerlink" title="json-server 搭配 mock.js"></a>json-server 搭配 mock.js</h3><ul>
+<li>这里以<code>Webpack</code> 的前端工程为例</li>
+</ul>
+<pre><code class="javascript">cnpm install json-server mockjs --save
+</code></pre>
+<ul>
+<li>在项目根目录新建 <code>mock</code>文件夹，新建 <code>mock/db.js</code> 作为 <code>mock</code> 数据源，<code>mock/server.js</code>作为 <code>mock</code> 服务，<code>mock/routes.js</code>重写路由表</li>
+</ul>
+<pre><code class="javascript">var Mock = require('mockjs');
+
+module.exports = {
+  getComment: Mock.mock({
+    "error": 0,
+    "message": "success",
+    "result|40": [{
+      "author": "@name",
+      "comment": "@cparagraph",
+      "date": "@datetime"
+    }]
+  }),
+  addComment: Mock.mock({
+    "error": 0,
+    "message": "success",
+    "result": []
+  })
+};  
+</code></pre>
+<ul>
+<li>这里我们利用 <code>mock.js</code> 生成 <code>mock</code> 数据，可以尽可能的还原真实数据，还可以减少数据构造的复杂度</li>
+</ul>
+<pre><code class="javascript">// routes.js
+module.exports = {
+  "/comment/get.action": "/getComment",
+  "/comment/add.action": "/addComment"
+}
+
+// server.js
+const jsonServer = require('json-server')
+const db = require('./db.js')
+const routes = require('./routes.js')
+const port = 3000;
+
+const server = jsonServer.create()
+const router = jsonServer.router(db)
+const middlewares = jsonServer.defaults()
+const rewriter = jsonServer.rewriter(routes)
+
+server.use(middlewares)
+// 将 POST 请求转为 GET
+server.use((request, res, next) =&gt; {
+  request.method = 'GET';
+  next();
+})
+
+server.use(rewriter) // 注意：rewriter 的设置一定要在 router 设置之前
+server.use(router)
+
+server.listen(port, () =&gt; {
+  console.log('open mock server at localhost:' + port)
+})
+    
+</code></pre>
+<ul>
+<li>启动服务</li>
+</ul>
+<pre><code class="javascript">$ node mock/server.js
+</code></pre>
+<ul>
+<li>打开 <code>http://localhost:3000/comment/get.action</code>即可查看到我们想要的数据</li>
+</ul>
+<p><img src="https://s.poetries.work/uploads/2022/05/970a371380180edd.png" alt="img"></p>
+<blockquote>
+<p>是不是这样就算搭建完了我们的 <code>mock-server</code> ？不，并没有。我们可以尝试修改一下 <code>db.js</code> 的文件内容，刷新浏览器发现 <code>mock</code> 数据并没有像我们想象的那样修改。那也就是说每次当我们需要添加 /修改 <code>mock</code> 数据使都需要重启一次 <code>mock</code> 服务</p>
+</blockquote>
+<h3 id="端口代理"><a href="#端口代理" class="headerlink" title="端口代理"></a>端口代理</h3><blockquote>
+<p>通过 <code>Webpack</code> 配置 <code>proxy</code> 代理</p>
+</blockquote>
+<pre><code class="javascript">module.exports = {
+  
+  devServer: {  
+    //其实很简单的，只要配置这个参数就可以了  
+    proxy: {  
+      '/api/': {  
+        target: 'http://localhost:3000',
+          changeOrigin: true,
+        pathRewrite: {
+          '^/api': ''
+        }
+      }
+    }
+  } 
+}
+</code></pre>
+<ul>
+<li>接着在代码里进行 <code>ajax</code>请求就可以写成，这里以 <code>axios</code> 为例子</li>
+</ul>
+<pre><code class="javascript">function getComments () {
+  axios.get('api/comment/get.action', {}).then((res) =&gt; {
+    console.log(res.data)
+  })
+}
+</code></pre>
+<h3 id="文件改动自动刷新"><a href="#文件改动自动刷新" class="headerlink" title="文件改动自动刷新"></a>文件改动自动刷新</h3><blockquote>
+<p>我们希望更改 <code>mock</code>文件能和 <code>webpack</code> 热更新一样，所改即所得。这里我使用了 <code>nodemon</code>，利用 <code>gulp</code> 建立自动执行的任务。</p>
+</blockquote>
+<pre><code class="javascript">cnpm install gulp gulp-nodemon browser-sync --save 
+    
+// gulpfile.js 的代码如下
+onst path = require('path');
+const gulp = require('gulp');
+const nodemon = require('gulp-nodemon');
+const browserSync = require('browser-sync').create();
+const server = path.resolve(__dirname, 'mock');
+
+// browser-sync 配置，配置里启动 nodemon 任务
+gulp.task('browser-sync', ['nodemon'], function() {
+  browserSync.init(null, {
+    proxy: "http://localhost:8080", // 这里的端口和 webpack 的端口一致
+    port: 8081
+  });
+});
+
+// browser-sync 监听文件
+gulp.task('mock', ['browser-sync'], function() {
+  gulp.watch(['./mock/db.js', './mock/**'], ['bs-delay']);
+});
+
+// 延时刷新
+gulp.task('bs-delay', function() {
+  setTimeout(function() {
+    browserSync.reload();
+  }, 1000);
+});
+
+// 服务器重启
+gulp.task('nodemon', function(cb) {
+  // 设个变量来防止重复重启
+  var started = false;
+  var stream = nodemon({
+    script: './mock/server.js',
+    // 监听文件的后缀
+    ext: "js",
+    env: {
+      'NODE_ENV': 'development'
+    },
+    // 监听的路径
+    watch: [
+      server
+    ]
+  });
+  stream.on('start', function() {
+    if (!started) {
+      cb();
+      started = true;
+    }
+  }).on('crash', function() {
+    console.error('application has crashed!\n')
+    stream.emit('restart', 10)
+  })
+});
+ 
+       
+    
+</code></pre>
+<ul>
+<li>这样以后我们在构建我们 <code>Webpack</code> 工程时只需要先执行 <code>npm run dev</code></li>
+<li>之后新建 <code>terminal</code> 执行 <code>gulp mock</code></li>
+<li>就可以搭建一个随改随变的 <code>mock-server</code> 环境</li>
+</ul>
+<p><strong>完整的代码详情</strong> <a target="_blank" rel="noopener" href="https://github.com/poetries/mock-server">https://github.com/poetries/mock-server</a></p>
+
+        <script src="https://giscus.app/client.js"
+        data-repo="jiangjiang1116/jiangjiang1116.github.io"
+        data-repo-id="R_kgDOKPAthg"
+        data-category="General"
+        data-category-id="DIC_kwDOKPAths4CZPtg"
+        data-mapping="title"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="light"
+        data-lang="zh-CN"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2023-10-13</span>
+            
+                <span>该篇被 江江</span>
+            
+            
+                <span>打上标签:
+                    
+                    
+                        <a href='/tags/mock/'>
+                            mock
+                        </a>
+                    
+                </span>
+             
+             
+                <span>放进分类:
+                    
+                    
+                        <a href='/categories/Notes/'>
+                            Notes
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+    
+        
+
+     
+</div>
+
+
+
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+             
+
+            
+                
+
+            
+        </span>
+    
+</div>
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>My Little Blog</span>
+            
+                <!-- <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span> -->
+                <span class="footer-last-span-right"><i></i></span>
+            
+    
+</div>
+
+
+    
+<link rel="stylesheet" href="/css/a11y-dark.min.css">
+
+    
+<script src="/js/highlight.min.js"></script>
+
+    
+<script src="/js/highlightjs-line-numbers.js"></script>
+
+
+
+<script>
+    hljs.initHighlightingOnLoad();
+    hljs.initLineNumbersOnLoad();
+</script>
+                </div>
+            
+    </body>
+</html>
