@@ -254,13 +254,6 @@
 
   
   <url>
-    <loc>http://jiangjiang1116.cn/tags/Canvas/</loc>
-    <lastmod>2023-11-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>http://jiangjiang1116.cn/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/</loc>
     <lastmod>2023-11-01</lastmod>
     <changefreq>weekly</changefreq>
@@ -268,14 +261,21 @@
   </url>
   
   <url>
-    <loc>http://jiangjiang1116.cn/tags/SQL/</loc>
+    <loc>http://jiangjiang1116.cn/tags/OS/</loc>
     <lastmod>2023-11-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://jiangjiang1116.cn/tags/OS/</loc>
+    <loc>http://jiangjiang1116.cn/tags/Canvas/</loc>
+    <lastmod>2023-11-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://jiangjiang1116.cn/tags/SQL/</loc>
     <lastmod>2023-11-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -331,14 +331,14 @@
   </url>
   
   <url>
-    <loc>http://jiangjiang1116.cn/tags/%E5%AD%A6%E4%B9%A0/</loc>
+    <loc>http://jiangjiang1116.cn/tags/%E7%BD%91%E7%BB%9C/</loc>
     <lastmod>2023-11-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://jiangjiang1116.cn/tags/%E7%BD%91%E7%BB%9C/</loc>
+    <loc>http://jiangjiang1116.cn/tags/%E5%AD%A6%E4%B9%A0/</loc>
     <lastmod>2023-11-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
