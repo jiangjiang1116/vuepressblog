@@ -2,6 +2,33 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://jiangjiang1116.cn/tags/index.html</loc>
+    
+    <lastmod>2023-11-01</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://jiangjiang1116.cn/about/index.html</loc>
+    
+    <lastmod>2023-11-01</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://jiangjiang1116.cn/index/index.html</loc>
+    
+    <lastmod>2023-11-01</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://jiangjiang1116.cn/baidu_verify_codeva-NrvIJz2AUu.html</loc>
     
     <lastmod>2023-11-01</lastmod>
@@ -92,15 +119,6 @@
   </url>
   
   <url>
-    <loc>http://jiangjiang1116.cn/about/index.html</loc>
-    
-    <lastmod>2023-10-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://jiangjiang1116.cn/2023/05/01/update/</loc>
     
     <lastmod>2023-10-12</lastmod>
@@ -164,15 +182,6 @@
   </url>
   
   <url>
-    <loc>http://jiangjiang1116.cn/index/index.html</loc>
-    
-    <lastmod>2023-10-11</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://jiangjiang1116.cn/2023/05/01/Start/</loc>
     
     <lastmod>2023-10-11</lastmod>
@@ -227,15 +236,6 @@
   </url>
   
   <url>
-    <loc>http://jiangjiang1116.cn/tags/index.html</loc>
-    
-    <lastmod>2023-09-24</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://jiangjiang1116.cn/list/index.html</loc>
     
     <lastmod>2023-09-08</lastmod>
@@ -261,14 +261,14 @@
   </url>
   
   <url>
-    <loc>http://jiangjiang1116.cn/tags/OS/</loc>
+    <loc>http://jiangjiang1116.cn/tags/Canvas/</loc>
     <lastmod>2023-11-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://jiangjiang1116.cn/tags/Canvas/</loc>
+    <loc>http://jiangjiang1116.cn/tags/OS/</loc>
     <lastmod>2023-11-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
