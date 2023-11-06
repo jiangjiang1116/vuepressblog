@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
+    <!-- 设置页面的语言属性，如果未指定则默认为英语（'en'） -->
+    
     <head>
 
     <meta name="baidu-site-verification" content="codeva-NrvIJz2AUu" />
@@ -34,14 +36,23 @@
 <meta name="generator" content="Hexo 6.3.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
+    <!-- 引入头部部分的模板文件 -->
+    
+    
+    <!-- 引入配置和样式的颜色模板文件 -->
     
     <body>
         <div class="paper">
             
             
+            <!-- 定义一些变量用于后续的条件判断 -->
             
             
+                <!-- 如果当前路径不是 "index.html" 也不是 "list/index.html" -->
+                
                 <div class="shadow-drop-2-bottom paper-main">
+                    <!-- 创建一个具有阴影效果的页面主体部分 -->
+                    
                     
 <div class="header">
     <div class="header-container">
@@ -76,6 +87,7 @@
         
     </ul>
 </div> 
+                    <!-- 引入文章页头部部分的模板文件 -->
         
                     
                     
@@ -83,7 +95,7 @@
                     
                     
                     
-                    <!--说明是文章post页面-->
+                    <!-- 如果以上条件都不满足，说明当前是文章post页面 -->
                     
                         <div class="post-main">
 
@@ -262,6 +274,7 @@
 
 
 
+                        <!-- 引入文章内容的模板文件 -->
                     
                     
                     <div class="footer">
@@ -302,7 +315,9 @@
     hljs.initHighlightingOnLoad();
     hljs.initLineNumbersOnLoad();
 </script>
+                    <!-- 引入页脚部分的模板文件 -->
                 </div>
             
+        </div>
     </body>
 </html>

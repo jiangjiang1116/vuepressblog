@@ -7,7 +7,7 @@
     <meta name="baidu-site-verification" content="codeva-NrvIJz2AUu" />
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0,  viewport-fit=cover" name="viewport" />
-    <meta name="description" content="一个按钮" />
+    <meta name="description" content="学习记录|低代码平台" />
     <meta name="hexo-theme-A4" content="v1.7.1" />
     <link rel="alternate icon" type="image/webp" href="/null">
     <title>Sinbad</title>
@@ -101,18 +101,72 @@
 
     
         <div class="post-main-title">
-            一个按钮
+            学习记录|低代码平台
         </div>
       
     
 
     <div class="post-md">
         
-            
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E9%A1%B9%E7%9B%AE%E4%B8%8B%E8%BD%BD%E5%92%8C%E8%BF%90%E8%A1%8C"><span class="post-toc-text">项目下载和运行</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Docker%E9%95%9C%E5%83%8F%E5%90%AF%E5%8A%A8%E5%89%8D%E7%AB%AF%EF%BC%88%E5%8D%95%E4%BD%93%E6%A8%A1%E5%BC%8F%EF%BC%89"><span class="post-toc-text">Docker镜像启动前端（单体模式）</span></a></li></ol>
         
-        <p>Night &amp;&amp; Day Toggle ☀️/🌙日间夜间切换按钮：</p>
-<p><a target="_blank" rel="noopener" href="https://codepen.io/jiangjiang1116/pen/PoXgWyV">复刻按钮效果</a>)(简易版本)</p>
-<p><a target="_blank" rel="noopener" href="https://codepen.io/jiangjiang1116/pen/JjwVEer">原版按钮效果</a>(复杂版)：原效果用了大量 HTML 标签，大量 SVG 元素以及 350 行的 CSS </p>
+        <p>​	最近修改了页面的一个样式，为了加强对样式的学习和对付比较典型的需求，我寻找到了一个低代码平台的项目：<a target="_blank" rel="noopener" href="https://www.jeecg.com/">JEECG官方网站</a><a target="_blank" rel="noopener" href="https://github.com/jeecgboot/ant-design-vue-jeecg">Github地址</a></p>
+<p>​	另外，我还发现了几个样式站：<a target="_blank" rel="noopener" href="https://viserjs.github.io/demo.html#/viser/bar/basic-bar">Viser (viserjs.github.io)</a><a target="_blank" rel="noopener" href="https://antv.antgroup.com/">AntV | 蚂蚁数据可视化 (antgroup.com)</a></p>
+<p><img src="F:\照片\image-20231102154211606.png" alt="image-20231102154211606"></p>
+<h2 id="项目下载和运行"><a href="#项目下载和运行" class="headerlink" title="项目下载和运行"></a><a target="_blank" rel="noopener" href="https://github.com/jeecgboot/ant-design-vue-jeecg#%E9%A1%B9%E7%9B%AE%E4%B8%8B%E8%BD%BD%E5%92%8C%E8%BF%90%E8%A1%8C">项目下载和运行</a></h2><ul>
+<li>拉取项目代码</li>
+</ul>
+<pre><code>git clone https://github.com/zhangdaiscott/jeecg-boot.git
+cd  jeecg-boot/ant-design-vue-jeecg
+</code></pre>
+<ul>
+<li>安装依赖</li>
+</ul>
+<pre><code>yarn install
+</code></pre>
+<ul>
+<li>开发模式运行</li>
+</ul>
+<pre><code>yarn run serve
+</code></pre>
+<ul>
+<li>编译项目</li>
+</ul>
+<pre><code>yarn run build
+</code></pre>
+<ul>
+<li>Lints and fixes files</li>
+</ul>
+<pre><code>yarn run lint
+</code></pre>
+<h2 id="Docker镜像启动前端（单体模式）"><a href="#Docker镜像启动前端（单体模式）" class="headerlink" title="Docker镜像启动前端（单体模式）"></a><a target="_blank" rel="noopener" href="https://github.com/jeecgboot/ant-design-vue-jeecg#docker%E9%95%9C%E5%83%8F%E5%90%AF%E5%8A%A8%E5%89%8D%E7%AB%AF%E5%8D%95%E4%BD%93%E6%A8%A1%E5%BC%8F">Docker镜像启动前端（单体模式）</a></h2><pre><code># 1.配置host
+
+   127.0.0.1   jeecg-boot-system
+   
+   这里在vue.config.js里修改，把target: 'http://localhost:8080',改为  target: 'http://127.0.0.1:8080'
+
+# 2.修改前端项目的后台域名
+   .env.development里的
+   VUE_APP_API_BASE_URL=http://localhost:8080/jeecg-boot
+
+   域名改成： http://jeecg-boot-system:8080/jeecg-boot
+   
+   
+  
+# 3.进入项目根目录，执行打包命令
+ yarn run build
+
+# 4.构建镜像
+ docker build -t jeecgboot-ui2 .
+ 
+ 停在这步，来活了
+
+# 5.启动镜像
+ docker run --name jeecgboot-ui-vue2 -p 80:80 -d jeecgboot-ui2
+
+# 6.访问前台项目
+ http://localhost
+</code></pre>
 
         <script src="https://giscus.app/client.js"
         data-repo="jiangjiang1116/jiangjiang1116.github.io"
@@ -135,26 +189,17 @@
     <div class="post-meta">
         <i>
         
-            <span>2023-10-13</span>
+            <span>2023-11-02</span>
             
                 <span>该篇被 江江</span>
             
             
-                <span>打上标签:
-                    
-                    
-                        <a href='/tags/CSS/'>
-                            CSS
-                        </a>
-                    
-                </span>
-             
              
                 <span>放进分类:
                     
                     
-                        <a href='/categories/CSS/'>
-                            CSS
+                        <a href='/categories/Notes/'>
+                            Notes
                         </a>
                     
                 </span>

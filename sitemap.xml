@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://jiangjiang1116.cn/2023/11/02/%E4%BD%8E%E4%BB%A3%E7%A0%81%E5%B9%B3%E5%8F%B0/</loc>
+    
+    <lastmod>2023-11-06</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://jiangjiang1116.cn/2023/11/03/1103%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/</loc>
     
     <lastmod>2023-11-03</lastmod>
@@ -291,14 +300,14 @@
   </url>
   
   <url>
-    <loc>http://jiangjiang1116.cn/tags/mock/</loc>
+    <loc>http://jiangjiang1116.cn/tags/markdown/</loc>
     <lastmod>2023-11-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://jiangjiang1116.cn/tags/markdown/</loc>
+    <loc>http://jiangjiang1116.cn/tags/mock/</loc>
     <lastmod>2023-11-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -377,14 +386,14 @@
   </url>
   
   <url>
-    <loc>http://jiangjiang1116.cn/categories/CSS/</loc>
+    <loc>http://jiangjiang1116.cn/categories/%E6%9B%B4%E6%96%B0/</loc>
     <lastmod>2023-11-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://jiangjiang1116.cn/categories/%E6%9B%B4%E6%96%B0/</loc>
+    <loc>http://jiangjiang1116.cn/categories/CSS/</loc>
     <lastmod>2023-11-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
