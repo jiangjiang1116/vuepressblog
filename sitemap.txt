@@ -1,3 +1,5 @@
+http://jiangjiang1116.cn/memes/index.html
+http://jiangjiang1116.cn/update/index.html
 http://jiangjiang1116.cn/2023/05/01/update/
 http://jiangjiang1116.cn/2023/11/03/1103%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/
 http://jiangjiang1116.cn/2023/11/02/%E4%BD%8E%E4%BB%A3%E7%A0%81%E5%B9%B3%E5%8F%B0/
@@ -23,14 +25,13 @@ http://jiangjiang1116.cn/2023/10/11/%E5%89%8D%E7%AB%AF%E7%BD%91%E7%BB%9C/
 http://jiangjiang1116.cn/2023/05/01/Start/
 http://jiangjiang1116.cn/2023/10/10/Linux%E6%93%8D%E4%BD%9C%E6%89%8B%E5%86%8C/
 http://jiangjiang1116.cn/2023/10/08/%E9%9B%86%E7%BE%A4/
-http://jiangjiang1116.cn/friends/index.html
 http://jiangjiang1116.cn/contact/index.html
 http://jiangjiang1116.cn/categories/index.html
 http://jiangjiang1116.cn/list/index.html
 http://jiangjiang1116.cn/
 http://jiangjiang1116.cn/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/
-http://jiangjiang1116.cn/tags/OS/
 http://jiangjiang1116.cn/tags/Canvas/
+http://jiangjiang1116.cn/tags/OS/
 http://jiangjiang1116.cn/tags/SQL/
 http://jiangjiang1116.cn/tags/markdown/
 http://jiangjiang1116.cn/tags/mock/
@@ -40,8 +41,8 @@ http://jiangjiang1116.cn/tags/%E4%B8%BB%E9%A2%98/
 http://jiangjiang1116.cn/tags/CSS/
 http://jiangjiang1116.cn/tags/%E5%89%8D%E5%90%8E%E7%AB%AF/
 http://jiangjiang1116.cn/tags/%E7%BD%91%E7%BB%9C/
-http://jiangjiang1116.cn/tags/%E5%AD%A6%E4%B9%A0/
 http://jiangjiang1116.cn/tags/%E9%9B%86%E7%BE%A4/
+http://jiangjiang1116.cn/tags/%E5%AD%A6%E4%B9%A0/
 http://jiangjiang1116.cn/categories/Notes/
 http://jiangjiang1116.cn/categories/Document/
 http://jiangjiang1116.cn/categories/%E6%9B%B4%E6%96%B0/
